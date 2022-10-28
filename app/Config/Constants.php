@@ -1,9 +1,15 @@
 <?php
+/*
+ | -----------------------------------------------------------------------------
+ | VERSI SID
+ | -----------------------------------------------------------------------------
+ */
+defined('VERSI_SID') || define('VERSI_SID', '3.11.0');
 
 /*
- | --------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  | App Namespace
- | --------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  |
  | This defines the default Namespace that is used throughout
  | CodeIgniter to refer to the Application directory. Change
@@ -16,19 +22,19 @@
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
 /*
- | --------------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  | Composer Path
- | --------------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  |
  | The path that Composer's autoload file is expected to live. By default,
  | the vendor folder is in the Root directory, but you can customize that here.
  */
-defined('COMPOSER_PATH') || define('COMPOSER_PATH', ROOTPATH . 'vendor/autoload.php');
+defined('COMPOSER_PATH') || define('COMPOSER_PATH', ROOTPATH . 'donjo-sys/autoload.php');
 
 /*
- |--------------------------------------------------------------------------
+ |------------------------------------------------------------------------------
  | Timing Constants
- |--------------------------------------------------------------------------
+ |------------------------------------------------------------------------------
  |
  | Provide simple ways to work with the myriad of PHP functions that
  | require information to be in seconds.
@@ -43,9 +49,9 @@ defined('YEAR')   || define('YEAR', 31_536_000);
 defined('DECADE') || define('DECADE', 315_360_000);
 
 /*
- | --------------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  | Exit Status Codes
- | --------------------------------------------------------------------------
+ | -----------------------------------------------------------------------------
  |
  | Used to indicate the conditions under which the script is exit()ing.
  | While there is no universal standard for error codes, there are some
