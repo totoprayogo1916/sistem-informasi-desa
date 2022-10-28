@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
+
 class Surat_master_model extends CI_Model
 {
     public function __construct()

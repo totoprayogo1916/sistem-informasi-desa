@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
+
 class Sms_model extends CI_Model
 {
     public function __construct()

@@ -1,11 +1,21 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
+
 class User_model extends CI_Model
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $table            = 'user';
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'object';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = true;
+    protected $allowedFields    = ['username', 'password', 'id_grup', 'email',
+        'last_login', 'active', 'nama', 'company', 'phone', 'foto', 'session',
+    ];
 
     public function siteman()
     {
