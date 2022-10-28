@@ -6,8 +6,6 @@ class Analisis_grafik extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('analisis_grafik_model');
         $this->load->model('analisis_laporan_keluarga_model');
         $this->load->model('user_model');

@@ -6,8 +6,6 @@ class Analisis_respon extends BaseController
 {
     public function __construct()
     {
-
-
         unset($_SESSION['delik']);
         $this->load->model('analisis_respon_model');
         $this->load->model('user_model');

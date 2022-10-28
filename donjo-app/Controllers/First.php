@@ -6,8 +6,6 @@ class First extends BaseController
 {
     public function __construct()
     {
-
-
         mandiri_timeout();
 
         $this->load->model('header_model');

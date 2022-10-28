@@ -6,8 +6,6 @@ class Rtm extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
         $this->load->model('rtm_model');
         $this->load->model('penduduk_model');

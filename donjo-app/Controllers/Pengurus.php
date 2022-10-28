@@ -6,8 +6,6 @@ class Pengurus extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
         $this->load->model('pamong_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);

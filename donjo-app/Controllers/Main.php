@@ -1,11 +1,11 @@
 <?php
 
+namespace App\Controllers;
+
 class Main extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('header_model');
         $this->load->model('user_model');
         $this->load->model('config_model');

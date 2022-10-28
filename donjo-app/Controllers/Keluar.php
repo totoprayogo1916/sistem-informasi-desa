@@ -6,8 +6,6 @@ class Keluar extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
         $this->load->model('surat_keluar_model');
         $this->load->model('surat_model');

@@ -6,8 +6,6 @@ class Analisis_statistik_jawaban extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('analisis_statistik_jawaban_model');
         $this->load->model('user_model');
         $this->load->model('header_model');

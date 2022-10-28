@@ -6,8 +6,6 @@ class Program_bantuan extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
 
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);

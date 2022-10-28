@@ -6,8 +6,6 @@ class Kelompok_master extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('kelompok_master_model');
         $this->load->model('user_model');
         $this->load->model('header_model');

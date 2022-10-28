@@ -6,8 +6,6 @@ class Feed extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('header_model');
         $this->load->model('feed_model');
         $this->load->model('config_model');

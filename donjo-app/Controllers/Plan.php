@@ -6,8 +6,6 @@ class Plan extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
 
         $this->load->model('header_model');

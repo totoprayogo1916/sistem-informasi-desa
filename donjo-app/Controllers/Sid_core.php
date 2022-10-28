@@ -6,8 +6,6 @@ class Sid_core extends BaseController
 {
     public function __construct()
     {
-
-
         $_SESSION['filter'] = 77;
 
         unset($_SESSION['log']);

@@ -6,8 +6,6 @@ class Analisis_kategori extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('analisis_kategori_model');
         $this->load->model('user_model');
         $this->load->model('header_model');

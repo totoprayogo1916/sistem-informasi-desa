@@ -6,8 +6,6 @@ class Analisis_master extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('analisis_master_model');
         $this->load->model('analisis_import_model');
         $this->load->model('user_model');

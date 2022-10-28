@@ -6,8 +6,6 @@ class Keluarga extends BaseController
 {
     public function __construct()
     {
-
-
         $this->load->model('user_model');
         $this->load->model('keluarga_model');
         $this->load->model('penduduk_model');
