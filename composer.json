@@ -1,26 +1,41 @@
 {
     "name": "ataslangit/sistem-informasi-desa",
     "require": {
-        "php": ">=7.3",
-        "codeigniter/framework": "^3",
-        "vlucas/phpdotenv": "^5.5"
+        "php": "^7.4 || ^8.0",
+        "codeigniter4/framework": "^4.0"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.1",
         "friendsofphp/php-cs-fixer": "^3",
-        "mikey179/vfsstream": "1.6.*"
+        "fakerphp/faker": "^1.9",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^9.1"
+    },
+    "suggest": {
+        "ext-fileinfo": "Improves mime type detection for files"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Support\\": "tests/_support"
+        }
     },
     "config": {
-        "lock": false,
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "7.3"
-        },
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "vendor-dir": "donjo-sys"
-    },
+      "lock": false,
+      "optimize-autoloader": true,
+      "platform": {
+          "php": "7.4"
+      },
+      "preferred-install": "dist",
+      "sort-packages": true,
+      "vendor-dir": "donjo-sys"
+  },
     "scripts": {
+        "test": "phpunit",
         "csfix": "./donjo-sys/bin/php-cs-fixer fix"
     }
 }
