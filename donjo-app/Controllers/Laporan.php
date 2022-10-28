@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Laporan extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
         $this->load->model('laporan_bulanan_model');

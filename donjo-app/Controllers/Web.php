@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Web extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
@@ -90,7 +89,7 @@ class Web extends BaseController
 
         $nav['act'] = 0;
         $this->load->view('header', $header);
-        //$this->load->view('web/spacer');
+        // $this->load->view('web/spacer');
         $this->load->view('web/nav', $nav);
         if ($cat !== 1003) {
             $this->load->view('web/artikel/form', $data);

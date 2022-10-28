@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Program_bantuan extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
 
@@ -116,7 +115,7 @@ class Program_bantuan extends BaseController
     public function hapus($id)
     {
         $this->program_bantuan_model->hapus_program($id);
-        //$this->load->view('program_bantuan/formsuccess');
+        // $this->load->view('program_bantuan/formsuccess');
         redirect('program_bantuan/');
     }
 

@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Plan extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
 
@@ -18,9 +17,9 @@ class Plan extends BaseController
             redirect('siteman');
         }
 
-        //$this->load->library('ion_auth');
+        // $this->load->library('ion_auth');
 
-        //$this->config->item('ion_auth') ;
+        // $this->config->item('ion_auth') ;
         $this->load->database();
     }
 

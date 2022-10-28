@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Analisis_laporan extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('analisis_laporan_model');
         $this->load->model('user_model');
@@ -131,7 +130,7 @@ class Analisis_laporan extends BaseController
 
     public function multi_jawab()
     {
-        //echo phpinfo();
+        // echo phpinfo();
         $data['form_action'] = site_url('analisis_laporan/multi_exec');
         $data['main']        = $this->analisis_laporan_model->multi_jawab(1, 1);
         $this->load->view('analisis_laporan/ajax_multi', $data);
@@ -141,7 +140,7 @@ class Analisis_laporan extends BaseController
     {
         $idcb = $_POST['id_cb'];
         print_r($idcb);
-        //redirect('analisis_laporan');
+        // redirect('analisis_laporan');
     }
 
     public function ajax_multi_jawab()

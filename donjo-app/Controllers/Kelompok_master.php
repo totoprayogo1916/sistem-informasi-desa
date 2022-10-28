@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Kelompok_master extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('kelompok_master_model');
         $this->load->model('user_model');

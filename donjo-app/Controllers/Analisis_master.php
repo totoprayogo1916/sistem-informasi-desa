@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Analisis_master extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('analisis_master_model');
         $this->load->model('analisis_import_model');
@@ -123,26 +122,34 @@ class Analisis_master extends BaseController
         $_SESSION['subjek_tipe']     = $subjek;
 
         switch ($subjek) {
-                case 1: $data['menu_respon'] = 'analisis_respon_penduduk'; $data['menu_laporan'] = 'analisis_laporan_penduduk'; break;
+            case 1: $data['menu_respon'] = 'analisis_respon_penduduk';
+                $data['menu_laporan']    = 'analisis_laporan_penduduk';
+                break;
 
-                case 2: $data['menu_respon'] = 'analisis_respon_keluarga'; $data['menu_laporan'] = 'analisis_laporan_keluarga'; break;
+            case 2: $data['menu_respon'] = 'analisis_respon_keluarga';
+                $data['menu_laporan']    = 'analisis_laporan_keluarga';
+                break;
 
-                case 3: $data['menu_respon'] = 'analisis_respon_rtm'; $data['menu_laporan'] = 'analisis_laporan_rtm'; break;
+            case 3: $data['menu_respon'] = 'analisis_respon_rtm';
+                $data['menu_laporan']    = 'analisis_laporan_rtm';
+                break;
 
-                case 4: $data['menu_respon'] = 'analisis_respon_kelompok'; $data['menu_laporan'] = 'analisis_laporan_kelompok'; break;
+            case 4: $data['menu_respon'] = 'analisis_respon_kelompok';
+                $data['menu_laporan']    = 'analisis_laporan_kelompok';
+                break;
 
-                default:redirect('analisis_master');
-            }
+            default:redirect('analisis_master');
+        }
         $data['menu_respon']  = 'analisis_respon';
         $data['menu_laporan'] = 'analisis_laporan';
         $header               = $this->header_model->get_data();
 
-        //PATCH
-        //if($p==1){
+        // PATCH
+        // if($p==1){
         $this->load->model('analisis_respon_model');
         $this->analisis_respon_model->pre_update();
-        //}
-        //----
+        // }
+        // ----
 
         $nav['act'] = 1;
         $this->load->view('header', $header);

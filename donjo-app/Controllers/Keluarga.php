@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Keluarga extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
         $this->load->model('keluarga_model');
@@ -937,20 +936,33 @@ class Keluarga extends BaseController
         }
 
         switch ($tipe) {
+            case 21: $_SESSION['kelas'] = $nomor;
+                $pre                    = 'KELAS SOSIAL : ';
+                break;
 
-            case 21: $_SESSION['kelas'] = $nomor; $pre = 'KELAS SOSIAL : '; break;
+            case 22: $_SESSION['raskin'] = $nomor;
+                $pre                     = 'RASKIN : ';
+                break;
 
-            case 22: $_SESSION['raskin'] = $nomor; $pre = 'RASKIN : '; break;
+            case 23: $_SESSION['id_blt'] = $nomor;
+                $pre                     = 'BLT : ';
+                break;
 
-            case 23: $_SESSION['id_blt'] = $nomor; $pre = 'BLT : '; break;
+            case 24: $_SESSION['id_bos'] = $nomor;
+                $pre                     = 'BOS : ';
+                break;
 
-            case 24: $_SESSION['id_bos'] = $nomor; $pre = 'BOS : '; break;
+            case 25: $_SESSION['id_pkh'] = $nomor;
+                $pre                     = 'PKH : ';
+                break;
 
-            case 25: $_SESSION['id_pkh'] = $nomor; $pre = 'PKH : '; break;
+            case 26: $_SESSION['id_jampersal'] = $nomor;
+                $pre                           = 'JAMPERSAL : ';
+                break;
 
-            case 26: $_SESSION['id_jampersal'] = $nomor; $pre = 'JAMPERSAL : '; break;
-
-            case 27: $_SESSION['id_bedah_rumah'] = $nomor; $pre = 'BEDAH RUMAH : '; break;
+            case 27: $_SESSION['id_bedah_rumah'] = $nomor;
+                $pre                             = 'BEDAH RUMAH : ';
+                break;
         }
         $data['grup']       = $this->user_model->sesi_grup($_SESSION['sesi']);
         $data['paging']     = $this->keluarga_model->paging_statistik($p, $o);
@@ -969,7 +981,7 @@ class Keluarga extends BaseController
         $this->load->view('sid/nav', $nav);
         $this->load->view('sid/kependudukan/keluarga_statistik', $data);
         $this->load->view('footer');
-        //redirect('keluarga');
+        // redirect('keluarga');
     }
 
     public function cetak_statistik($tipe = 0)

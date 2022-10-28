@@ -107,7 +107,7 @@ class Config_model extends CI_Model
         curl_setopt($ch, CURLOPT_POST, count($fields));
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //curl_setopt($ch,CURLOPT_MUTE, true);
+        // curl_setopt($ch,CURLOPT_MUTE, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         curl_exec($ch);
@@ -119,7 +119,7 @@ class Config_model extends CI_Model
         $sql   = 'SELECT kunci,favorit FROM tweb_surat_format WHERE 1;';
         $query = $this->db->query($sql);
 
-        //if(!$query){
+        // if(!$query){
         $sql   = 'SELECT * FROM tweb_surat_format WHERE 1';
         $query = $this->db->query($sql);
         $data  = $query->result_array();
@@ -147,7 +147,7 @@ class Config_model extends CI_Model
             fwrite($handle, $buffer);
             fclose($handle);
         }
-        //}
+        // }
     }
 
     public function initsurat()
@@ -410,8 +410,8 @@ class Config_model extends CI_Model
         $this->cls();
 
         $b = "SELECT id FROM tweb_wil_clusterdesa WHERE rt <> '-' AND rt <> 0 AND rw <> 0 AND rw <> '-'";
-        //$query 	= $this->db->query($sql);
-        //$data	= $query->result_array();
+        // $query 	= $this->db->query($sql);
+        // $data	= $query->result_array();
     }
 
     public function opt()

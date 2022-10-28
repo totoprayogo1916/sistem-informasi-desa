@@ -1,17 +1,16 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Database extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('user_model');
         $this->load->dbforge();
-        //$this->load->model('wilayah_model');
+        // $this->load->model('wilayah_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== 1) {
             redirect('siteman');
@@ -66,7 +65,7 @@ class Database extends BaseController
         $nav['act']           = 4;
         $data['form_action3'] = site_url('database/ppls_individu');
         $data['form_action2'] = site_url('database/ppls_rumahtangga');
-        //$data['form_action'] = site_url("database/ppls_kuisioner");
+        // $data['form_action'] = site_url("database/ppls_kuisioner");
         $header = $this->header_model->get_data();
         $this->load->view('header', $header);
         $this->load->view('nav', $nav);
@@ -143,7 +142,7 @@ class Database extends BaseController
     public function ppls_individu()
     {
         $this->import_model->pbdt_individu();
-        //redirect('database/import_ppls');
+        // redirect('database/import_ppls');
     }
 
     public function ppls_rumahtangga()
@@ -198,7 +197,7 @@ class Database extends BaseController
     public function surat()
     {
         $this->export_model->gawe_surat();
-        //redirect('database/import');
+        // redirect('database/import');
     }
 
     public function export_excel()

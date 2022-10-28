@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Sid_core extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $_SESSION['filter'] = 77;
 

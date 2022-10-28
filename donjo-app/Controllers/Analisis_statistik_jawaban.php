@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Analisis_statistik_jawaban extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('analisis_statistik_jawaban_model');
         $this->load->model('user_model');
@@ -172,7 +171,7 @@ class Analisis_statistik_jawaban extends BaseController
 
         $ai = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);
 
-        //redirect('analisis_statistik_jawaban');
+        // redirect('analisis_statistik_jawaban');
 
         $data['analisis_statistik_jawaban'] = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);
         $data['analisis_master']            = $this->analisis_statistik_jawaban_model->get_analisis_master();
@@ -212,7 +211,7 @@ class Analisis_statistik_jawaban extends BaseController
         $data['list_dusun'] = $this->analisis_statistik_jawaban_model->list_dusun();
 
         $ai = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);
-        //if($ai['id_tipe']==3 OR $ai['id_tipe']==4)
+        // if($ai['id_tipe']==3 OR $ai['id_tipe']==4)
         //	redirect('analisis_statistik_jawaban');
 
         $data['analisis_statistik_pertanyaan'] = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);

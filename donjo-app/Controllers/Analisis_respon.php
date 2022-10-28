@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Analisis_respon extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         unset($_SESSION['delik']);
         $this->load->model('analisis_respon_model');
@@ -140,7 +139,7 @@ class Analisis_respon extends BaseController
         redirect("analisis_respon/kuisioner/{$p}/{$o}/{$id}");
     }
 
-    //CHILD--------------------
+    // CHILD--------------------
     public function kuisioner_child($p = 1, $o = 0, $id = '', $idc = '')
     {
         $data['p'] = $p;

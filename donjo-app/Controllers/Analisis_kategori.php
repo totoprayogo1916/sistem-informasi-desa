@@ -1,13 +1,12 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Analisis_kategori extends BaseController
 {
     public function __construct()
     {
-        parent::__construct();
+
 
         $this->load->model('analisis_kategori_model');
         $this->load->model('user_model');
@@ -75,10 +74,10 @@ class Analisis_kategori extends BaseController
             $data['form_action']       = site_url('analisis_kategori/insert');
         }
 
-        //$this->load->view('header', $header);
-        //$this->load->view('analisis_master/nav');
+        // $this->load->view('header', $header);
+        // $this->load->view('analisis_master/nav');
         $this->load->view('analisis_kategori/ajax_form', $data);
-        //$this->load->view('footer');
+        // $this->load->view('footer');
     }
 
     public function search()
