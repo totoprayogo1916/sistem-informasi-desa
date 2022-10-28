@@ -4,7 +4,6 @@ namespace App\Models;
 
 use CodeIgniter\Model as CI_Model;
 
-
 class User_model extends CI_Model
 {
     protected $table            = 'user';
