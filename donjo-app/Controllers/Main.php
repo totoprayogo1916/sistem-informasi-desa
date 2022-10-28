@@ -1,6 +1,6 @@
 <?php
 
-class Main extends CI_Controller
+class Main extends BaseController
 {
     public function __construct()
     {
