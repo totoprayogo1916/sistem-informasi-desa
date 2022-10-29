@@ -12,9 +12,10 @@ class Auth extends BaseController
     public function getView()
     {
         $config = new ConfigModel();
+        $title  = 'Masuk';
         $desa   = $config->first();
 
-        return view('auth/login', compact('desa'));
+        return view('auth/login', compact('title', 'desa'));
     }
 
     /**
