@@ -2,16 +2,25 @@
 
 namespace App\Controllers;
 
-class Siteman extends BaseController
+class Auth extends BaseController
 {
-    public function __construct()
+    /**
+     * Tampil halaman login
+     */
+    public function getView()
     {
-        $this->load->model('header_model');
-        $this->load->model('user_model');
-        $this->load->model('config_model');
+        return view('auth/login');
     }
 
-    public function index()
+    /**
+     * Proses login
+     *
+     */
+    public function postLogin()
+    {
+    }
+
+    protected function index()
     {
         $this->user_model->logout();
         $header = $this->header_model->get_config();
@@ -30,14 +39,14 @@ class Siteman extends BaseController
         $_SESSION['siteman'] = 0;
     }
 
-    public function auth()
+    protected function auth()
     {
         $this->config_model->do_reg();
         $this->user_model->siteman();
         redirect('main');
     }
 
-    public function login()
+    protected function login()
     {
         $this->user_model->logout();
         redirect('siteman');

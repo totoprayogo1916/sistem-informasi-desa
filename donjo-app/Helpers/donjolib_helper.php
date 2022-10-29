@@ -582,7 +582,7 @@ function getBulan($bln)
     }
 }
 
-function timer()
+function timer_session()
 {
     $time                = 2000;
     $_SESSION['timeout'] = time() + $time;
@@ -604,7 +604,7 @@ function cek_login()
 {
     $timeout = $_SESSION['timeout'];
     if (time() < $timeout) {
-        timer();
+        timer_session();
 
         return true;
     }
