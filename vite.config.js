@@ -4,8 +4,13 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/assets/scss/app.css', 'resources/js/app.js'],
+            input: ['resources/scss/app.scss'],
             refresh: true,
+            // buildDirectory: './',
         }),
     ],
+    build: {
+        assetsDir: './',
+        outDir: 'public/assets'
+    }
 });
