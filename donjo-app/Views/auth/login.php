@@ -2,42 +2,40 @@
 
 <?= $this->section("content") ?>
 
-<div id="loginform">
-    <a href="<?= site_url() ?>first">
-        <div id="facebook">
-            <div id="sid">SID</div>
-            <div id="connect">ver.</div>
-            <div id="logo"><img src="<?= base_url() ?>assets/images/SID-e1351656852451.png"></div>
-            <div id="desa">Desa <?= unpenetration($desa->nama_desa) ?></div>
-            <div id="kec">Kecamatan <?= unpenetration(
-                $desa->nama_kecamatan
-            ) ?></div>
-            <div id="kab">Kabupaten <?= unpenetration(
-                $desa->nama_kabupaten
-            ) ?></div>
+<main class="main-content  mt-0">
+    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 text-center mx-auto">
+                    <h1 class="text-white mb-2 mt-5">Selamat datang!</h1>
+                    <p class="text-lead text-white">Masuk sekarang untuk mengatur sistem</p>
+                </div>
+            </div>
         </div>
-    </a>
-    <div id="mainlogin">
-        <div id="or"><?= VERSI_SID ?></div>
-        <h1>Masukkan Username dan Password</h1>
-        <form action="<?= site_url("siteman/auth") ?>" method="post">
-            <input name="username" type="text" placeholder="username" value="" required>
-            <input name="password" type="password" placeholder="password" value="" required>
-            <button type="submit" id="but">LOGIN</button>
-            <?php if (session("siteman") === -1) { ?>
-                <div id="note">
-                    Login Gagal. Username atau Password yang Anda masukkan salah!
-                </div>
-            <?php } elseif (session("siteman") === -2) { ?>
-                <div id="note">
-                    Tidak ada aktivitas dalam jangka waktu yang cukup lama. Demi keamanan silakan Login kembali.
-                </div>
-            <?php } ?>
-        </form>
     </div>
-    <div id="facebook2">
-        <div id="kab2"><a href="http://combine.or.id" target="_blank"><img align=center src="<?= base_url() ?>assets/images/logo-combine.png"></a></div>
+    <div class="container">
+        <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
+            <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+                <div class="card z-index-0 shadow-sm">
+                    <div class="card-body">
+                        <form role="form" action="<?= site_url("siteman") ?>" method="post">
+                            <div class="mb-3">
+                                <input type="text" name="username" class="form-control" placeholder="Pengguna" aria-label="Pengguna">
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" name="password" class="form-control" placeholder="Kata sandi" aria-label="Kata sandi">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Masuk</button>
+                            </div>
+                            <p class="text-sm mt-3 mb-0">Lupa Kata sandi? <a href="javascript:;" class="text-dark font-weight-bolder">Atur ulang</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</main>
 
 <?= $this->endSection() ?>

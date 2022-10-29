@@ -1,5 +1,29 @@
 <?php
 
+/**
+ * Ambil url dari folder assets yang digenerate dari resources
+ *
+ * @param string $assets Path resources
+ *
+ * @return string URL dari assets yang terbentuk
+ */
+function assets(string $assets): string
+{
+    // baca manifest.json dari folder assets
+    $manifest_path = FCPATH . 'assets/manifest.json';
+    $manifest      = [];
+
+    if (is_file($manifest_path)) {
+        $manifest = json_decode(file_get_contents($manifest_path), true);
+    }
+
+    if (array_key_exists($assets, $manifest)) {
+        return base_url('assets/' . $manifest[$assets]['file']);
+    }
+
+    return '';
+}
+
 function Rpt($str = 0)
 {
     $satuan  = ['', ' satu', ' dua', ' tiga', ' empat', ' lima', ' enam', ' tujuh', ' delapan', ' sembilan'];
