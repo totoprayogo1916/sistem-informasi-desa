@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ConfigModel;
+
 class Auth extends BaseController
 {
     /**
@@ -9,12 +11,14 @@ class Auth extends BaseController
      */
     public function getView()
     {
-        return view('auth/login');
+        $config = new ConfigModel();
+        $desa   = $config->first();
+
+        return view('auth/login', compact('desa'));
     }
 
     /**
      * Proses login
-     *
      */
     public function postLogin()
     {
