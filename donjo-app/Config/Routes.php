@@ -37,7 +37,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::index');
 
-$routes->group('siteman', static function ($routes) {
+$routes->group('siteman', ['filter' => 'auth:public'], static function ($routes) {
     $routes->get('/', 'Auth::getView');
     $routes->post('/', 'Auth::postLogin');
 });
