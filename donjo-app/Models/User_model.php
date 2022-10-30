@@ -16,34 +16,10 @@ class User_model extends CI_Model
         'last_login', 'active', 'nama', 'company', 'phone', 'foto', 'session',
     ];
 
-    public function siteman()
-    {
-        $username = $this->input->post('username');
-        $password = hash_password($this->input->post('password'));
-
-        $sql   = 'SELECT id,password,id_grup,session FROM user WHERE username=?';
-        $query = $this->db->query($sql, [$username]);
-        $row   = $query->row();
-        if ($row) {
-            if ($password === $row->password) {
-                $this->reset_timer();
-                $data['session'] = hash_password(time() . $password);
-                $this->db->where('id', $row->id);
-                $this->db->update('user', $data);
-
-                $_SESSION['siteman'] = 1;
-                $_SESSION['sesi']    = $data['session'];
-                // $_SESSION['sesi'] = $row->session;
-                $_SESSION['user']     = $row->id;
-                $_SESSION['grup']     = $row->id_grup;
-                $_SESSION['per_page'] = 10;
-            } else {
-                $_SESSION['siteman'] = -1;
-            }
-        } else {
-            $_SESSION['siteman'] = -1;
-        }
-    }
+    /* -------------------------------------------------------------------------
+     * Fungsi dibawah akan di croscek kemudian
+     * -------------------------------------------------------------------------
+     */
 
     public function sesi_grup($sesi = '')
     {
@@ -234,7 +210,7 @@ class User_model extends CI_Model
         return $data;
     }
 
-    public function insert()
+    public function insert_b()
     {
         $data             = $_POST;
         $data['password'] = hash_password($data['password']);
@@ -264,7 +240,7 @@ class User_model extends CI_Model
         }
     }
 
-    public function update($id = 0)
+    public function update_b($id = 0)
     {
         $data = $_POST;
         unset($data['old_foto'], $data['foto']);
@@ -299,7 +275,7 @@ class User_model extends CI_Model
         }
     }
 
-    public function delete($id = '')
+    public function delete_b($id = '')
     {
         $sql  = 'DELETE FROM user WHERE id=?';
         $outp = $this->db->query($sql, [$id]);

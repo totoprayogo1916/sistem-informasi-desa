@@ -24,6 +24,27 @@ function assets(string $assets): string
     return '';
 }
 
+/**
+ * Generate hash password,
+ * Merupakan fungsi lama yang seharusnya sudah tidak digunakan
+ *
+ * @param string $password Kata sandi yang akan dibuat hash
+ */
+function hash_password($password = ''): string
+{
+    $password = strrev($password);
+    $password .= '!#@$#%';
+    $password = md5($password);
+    $password = substr($password, 3, 19);
+
+    return md5($password);
+}
+
+/* -----------------------------------------------------------------------------
+ * Fungsi dibawah ini harus diperbarui dan pindahkan keatas (jika sudah fix)
+ * -----------------------------------------------------------------------------
+ */
+
 function Rpt($str = 0)
 {
     $satuan  = ['', ' satu', ' dua', ' tiga', ' empat', ' lima', ' enam', ' tujuh', ' delapan', ' sembilan'];
@@ -615,15 +636,7 @@ function generator($length = 7)
 {
     return substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, $length);
 }
-function hash_password($password = '')
-{
-    $password = strrev($password);
-    $password .= '!#@$#%';
-    $password = md5($password);
-    $password = substr($password, 3, 19);
 
-    return md5($password);
-}
 function cek_login()
 {
     $timeout = $_SESSION['timeout'];

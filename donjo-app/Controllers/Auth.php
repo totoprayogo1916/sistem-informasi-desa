@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\ConfigModel;
+use App\Models\User_model;
 
 class Auth extends BaseController
 {
     /**
      * Tampil halaman login
      */
-    public function getView()
+    public function getView(): string
     {
         $config = new ConfigModel();
         $title  = 'Masuk';
@@ -20,40 +21,47 @@ class Auth extends BaseController
 
     /**
      * Proses login
+     *
+     * @return \CodeIgniter\HTTP\RedirectResponse|string
      */
     public function postLogin()
     {
-    }
+        $validation = \Config\Services::validation();
 
-    protected function index()
-    {
-        $this->user_model->logout();
-        $header = $this->header_model->get_config();
-
-        if (! isset($_SESSION['siteman'])) {
-            $_SESSION['siteman'] = 0;
+        if ($this->request->getPost()) {
+            // make rules validation for signin
+            $validation->setRules([
+                'username' => ['label' => 'nama pengguna', 'rules' => 'required'],
+                'password' => ['label' => 'kata sandi', 'rules' => 'required'],
+            ]);
         }
-        $_SESSION['success']    = 0;
-        $_SESSION['per_page']   = 10;
-        $_SESSION['cari']       = '';
-        $_SESSION['pengumuman'] = 0;
-        $_SESSION['sesi']       = 'kosong';
-        $_SESSION['timeout']    = 0;
 
-        $this->load->view('siteman', $header);
-        $_SESSION['siteman'] = 0;
-    }
+        if (! $validation->withRequest($this->request)->run()) {
+            return $this->getView();
+        }
 
-    protected function auth()
-    {
-        $this->config_model->do_reg();
-        $this->user_model->siteman();
-        redirect('main');
-    }
+        $userModel = new User_model();
+        $username  = $this->request->getPost('username');
+        $password  = $this->request->getPost('password');
 
-    protected function login()
-    {
-        $this->user_model->logout();
-        redirect('siteman');
+        $getUser = $userModel->where(['username' => $username])->first();
+
+        if ($getUser !== null) {
+            if ($getUser->password === hash_password($password)) {
+                $sesi_login = [
+                    'userid'    => $getUser->id,
+                    'username'  => $getUser->username,
+                    'is_logged' => true,
+                ];
+
+                session()->set($sesi_login);
+
+                return redirect()->to('admin/dasbor')->with('alert_success', 'Halo, selamat datang kembali.');
+            }
+
+            return redirect()->to('siteman')->with('alert_warning', 'Kata sandi/nama pengguna salah.');
+        }
+
+        return redirect()->to('siteman')->with('alert_danger', 'Harap coba dengan akun lain.');
     }
 }
