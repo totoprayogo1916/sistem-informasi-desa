@@ -1,7 +1,7 @@
 name: Format Kode
 
 on:
-  pull_request_target:
+  pull_request:
     paths:
       - "donjo-app/Views/**"
   # pull_request_review:
