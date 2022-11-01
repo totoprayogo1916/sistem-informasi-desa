@@ -4,12 +4,12 @@ on:
   pull_request_target:
     paths:
       - "donjo-app/Views/**"
-  pull_request_review:
-    types: [submitted]
+  # pull_request_review:
+    # types: [submitted]
 
 jobs:
   beautifier:
-    if: github.event.review.state == 'approved'
+    # if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
