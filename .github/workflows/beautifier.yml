@@ -3,7 +3,7 @@ name: Format Kode
 on:
   pull_request_target:
     paths:
-      - "donjo-app/views/**"
+      - "donjo-app/Views/**"
   pull_request_review:
     types: [submitted]
 
