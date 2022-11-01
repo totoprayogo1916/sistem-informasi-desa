@@ -41,6 +41,12 @@ $routes->group('siteman', ['filter' => 'auth:public'], static function ($routes)
     $routes->get('/', 'Auth::getView');
     $routes->post('/', 'Auth::postLogin');
 });
+
+$routes->group('admin', ['filter' => 'auth:admin'], static function ($routes) {
+    $routes->get('/dasbor', 'Admin\Dasbor::getView');
+
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
