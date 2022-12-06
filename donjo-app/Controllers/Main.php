@@ -8,47 +8,14 @@ class Main extends BaseController
 {
     public function __construct()
     {
-        $this->load->model('header_model');
-        $this->load->model('user_model');
-        $this->load->model('config_model');
+        // $this->load->model('header_model');
+        // $this->load->model('user_model');
+        // $this->load->model('config_model');
     }
 
     public function index()
     {
-        $install = new Install();
-
-        if ($install->cek()) {
-            if (isset($_SESSION['siteman'])) {
-                if (isset($_SESSION['sesi'])) {
-                    $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
-
-                    switch ($grup) {
-                        case 1: redirect('hom_desa'); break;
-
-                        case 2: redirect('hom_desa'); break;
-
-                        case 3: redirect('web'); break;
-
-                        case 4: redirect('web'); break;
-
-                        default: if (isset($_SESSION['siteman'])) {
-                            redirect('siteman');
-                        } else {
-                            redirect('first');
-                        }
-                    }
-                }
-            } else {
-                redirect('first');
-            }
-        } else {
-            redirect('main/initial');
-        }
-    }
-
-    public function initial()
-    {
-        view('install');
+        // code...
     }
 
     public function install()
