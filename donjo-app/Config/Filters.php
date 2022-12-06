@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\BelumInstal;
+use App\Filters\SudahInstal;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -23,6 +25,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'sudahinstal'   => SudahInstal::class,
+        'beluminstal'   => BelumInstal::class,
     ];
 
     /**
@@ -33,6 +37,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'beluminstal' => ['except' => ['install', 'install/*']],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
@@ -64,5 +69,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'sudahinstal' => ['before' => ['install', 'install/*']],
+    ];
 }
