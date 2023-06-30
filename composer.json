@@ -3,6 +3,7 @@
   "require": {
     "php": ">=7.4",
     "codeigniter/framework": "^3",
+    "kenjis/ci3-to-4-upgrade-helper": "^0.7.1",
     "vlucas/phpdotenv": "^5.5"
   },
   "require-dev": {
