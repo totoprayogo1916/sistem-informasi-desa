@@ -21,3 +21,22 @@ public/build/vendors/tinymce/**
 !public/build/vendors/tinymce/**/*.gif
 !public/build/vendors/tinymce/**/*.swf
 !public/build/vendors/tinymce/skins/**
+
+#-------------------------
+# Temporary Files
+#-------------------------
+writable/cache/*
+!writable/cache/index.html
+
+writable/logs/*
+!writable/logs/index.html
+
+writable/session/*
+!writable/session/index.html
+
+writable/uploads/*
+!writable/uploads/index.html
+
+writable/debugbar/*
+
+/ci4

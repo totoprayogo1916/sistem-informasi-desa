@@ -9,13 +9,16 @@ use PhpCsFixer\Finder;
 
 $finder = Finder::create()
     ->in(__DIR__)
-    ->exclude(['donjo-app/Views', 'donjo-sys']);
+    ->exclude([
+        'donjo-app/Views',
+        'donjo-sys',
+        'node_modules'
+    ]);
 
 $overrides = [];
 
 $options = [
     'finder'       => $finder,
-    'customFixers' => FixerGenerator::create('donjo-sys/nexusphp/cs-config/src/Fixer', 'Nexus\\CsConfig\\Fixer'),
 ];
 
 return Factory::create(new CodeIgniter4(), $overrides, $options)->forProjects();
