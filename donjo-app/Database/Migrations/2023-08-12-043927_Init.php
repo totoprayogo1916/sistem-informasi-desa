@@ -40,11 +40,26 @@ class Init extends Migration
         $this->forge->addKey('id_master');
 
         $this->forge->createTable('analisis_kategori_indikator', true);
+
+        // analisis_klasifikasi
+        $this->forge->addField([
+            'id' => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
+            'id_master' => ['type' => 'INT', 'constraint' => 11],
+            'nama' => ['type' => 'VARCHAR', 'constraint' => 20],
+            'minval' => ['type' => 'DOUBLE', 'constraint' => '5,2'],
+            'maxval' => ['type' => 'DOUBLE', 'constraint' => '5,2'],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey('id_master');
+
+        $this->forge->createTable('analisis_klasifikasi', true);
     }
 
     public function down()
     {
         $this->forge->dropTable('analisis_indikator');
         $this->forge->dropTable('analisis_kategori_indikator');
+        $this->forge->dropTable('analisis_klasifikasi');
     }
 }
