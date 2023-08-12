@@ -1,13 +1,3 @@
-
--- `analisis_kategori_indikator`
-CREATE TABLE IF NOT EXISTS `analisis_kategori_indikator` (
- `id` tinyint(4) NOT NULL AUTO_INCREMENT,
- `id_master` tinyint(4) NOT NULL,
- `kategori_kode` varchar(3) NOT NULL,
- `kategori` varchar(50) NOT NULL,
- PRIMARY KEY (`id`),
- KEY `id_master` (`id_master`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- `analisis_klasifikasi`
 CREATE TABLE IF NOT EXISTS `analisis_klasifikasi` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
