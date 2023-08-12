@@ -25,7 +25,6 @@ class Init extends Migration
         $this->forge->addKey(['id_master', 'id_tipe'], false, false, 'id_master');
         $this->forge->addKey('id_tipe');
         $this->forge->addKey('id_kategori');
-
         $this->forge->createTable('analisis_indikator', true);
 
         // analisis_kategori_indikator
@@ -38,7 +37,6 @@ class Init extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addKey('id_master');
-
         $this->forge->createTable('analisis_kategori_indikator', true);
 
         // analisis_klasifikasi
@@ -52,7 +50,6 @@ class Init extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addKey('id_master');
-
         $this->forge->createTable('analisis_klasifikasi', true);
 
         // analisis_master
@@ -69,8 +66,21 @@ class Init extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-
         $this->forge->createTable('analisis_master', true);
+
+        // analisis_parameter
+        $this->forge->addField([
+            'id'           => ['type' => 'int', 'constraint' => 11, 'auto_increment' => true],
+            'id_indikator' => ['type' => 'int', 'constraint' => 11],
+            'kode_jawaban' => ['type' => 'int', 'constraint' => 3],
+            'asign'        => ['type' => 'tinyint', 'constraint' => 1, 'default' => '0'],
+            'jawaban'      => ['type' => 'varchar', 'constraint' => 200],
+            'nilai'        => ['type' => 'tinyint', 'constraint' => 4, 'default' => '0'],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey('id_indikator');
+        $this->forge->createTable('analisis_parameter', true);
     }
 
     public function down()
@@ -79,5 +89,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_kategori_indikator', true);
         $this->forge->dropTable('analisis_klasifikasi', true);
         $this->forge->dropTable('analisis_master', true);
+        $this->forge->dropTable('analisis_parameter', true);
     }
 }
