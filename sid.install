@@ -1,16 +1,3 @@
--- `analisis_partisipasi`
-CREATE TABLE IF NOT EXISTS `analisis_partisipasi` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `id_subjek` int(11) NOT NULL,
- `id_master` int(11) NOT NULL,
- `id_periode` int(11) NOT NULL,
- `id_klassifikasi` int(11) NOT NULL DEFAULT '1',
- PRIMARY KEY (`id`),
- KEY `id_subjek` (`id_subjek`,`id_master`,`id_periode`,`id_klassifikasi`),
- KEY `id_master` (`id_master`),
- KEY `id_periode` (`id_periode`),
- KEY `id_klassifikasi` (`id_klassifikasi`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- `analisis_periode`
 CREATE TABLE IF NOT EXISTS `analisis_periode` (
  `id` int(11) NOT NULL AUTO_INCREMENT,

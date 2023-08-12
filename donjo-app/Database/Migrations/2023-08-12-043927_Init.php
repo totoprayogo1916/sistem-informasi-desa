@@ -81,6 +81,22 @@ class Init extends Migration
         $this->forge->addPrimaryKey('id');
         $this->forge->addKey('id_indikator');
         $this->forge->createTable('analisis_parameter', true);
+
+        // analisis_partisipasi
+        $this->forge->addField([
+            'id'              => ['type' => 'int', 'constraint' => 11, 'auto_increment' => true],
+            'id_subjek'       => ['type' => 'int', 'constraint' => 11],
+            'id_master'       => ['type' => 'int', 'constraint' => 11],
+            'id_periode'      => ['type' => 'int', 'constraint' => 11],
+            'id_klassifikasi' => ['type' => 'int', 'constraint' => 11, 'default' => 1],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey(['id_subjek','id_master','id_periode','id_klassifikasi'], false, false, 'id_subjek');
+        $this->forge->addKey('id_master');
+        $this->forge->addKey('id_periode');
+        $this->forge->addKey('id_klassifikasi');
+        $this->forge->createTable('analisis_partisipasi', true);
     }
 
     public function down()
@@ -90,5 +106,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_klasifikasi', true);
         $this->forge->dropTable('analisis_master', true);
         $this->forge->dropTable('analisis_parameter', true);
+        $this->forge->dropTable('analisis_partisipasi', true);
     }
 }
