@@ -43,23 +43,41 @@ class Init extends Migration
 
         // analisis_klasifikasi
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
+            'id'        => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
             'id_master' => ['type' => 'INT', 'constraint' => 11],
-            'nama' => ['type' => 'VARCHAR', 'constraint' => 20],
-            'minval' => ['type' => 'DOUBLE', 'constraint' => '5,2'],
-            'maxval' => ['type' => 'DOUBLE', 'constraint' => '5,2'],
+            'nama'      => ['type' => 'VARCHAR', 'constraint' => 20],
+            'minval'    => ['type' => 'DOUBLE', 'constraint' => '5,2'],
+            'maxval'    => ['type' => 'DOUBLE', 'constraint' => '5,2'],
         ]);
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addKey('id_master');
 
         $this->forge->createTable('analisis_klasifikasi', true);
+
+        // analisis_master
+        $this->forge->addField([
+            'id'            => ['type' => 'int', 'constraint' => 11, 'auto_increment' => true],
+            'nama'          => ['type' => 'varchar', 'constraint' => 40],
+            'subjek_tipe'   => ['type' => 'tinyint', 'constraint' => 4],
+            'lock'          => ['type' => 'tinyint', 'constraint' => 1, 'default' => '1'],
+            'deskripsi'     => ['type' => 'text'],
+            'kode_analisis' => ['type' => 'varchar', 'constraint' => 5, 'default' => '00000'],
+            'id_child'      => ['type' => 'smallint', 'constraint' => 4],
+            'id_kelompok'   => ['type' => 'int', 'constraint' => 11],
+            'pembagi'       => ['type' => 'varchar', 'constraint' => 10, 'default' => 100],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+
+        $this->forge->createTable('analisis_master', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('analisis_indikator');
-        $this->forge->dropTable('analisis_kategori_indikator');
-        $this->forge->dropTable('analisis_klasifikasi');
+        $this->forge->dropTable('analisis_indikator', true);
+        $this->forge->dropTable('analisis_kategori_indikator', true);
+        $this->forge->dropTable('analisis_klasifikasi', true);
+        $this->forge->dropTable('analisis_master', true);
     }
 }
