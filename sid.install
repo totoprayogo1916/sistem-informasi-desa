@@ -1,19 +1,4 @@
 
-CREATE TABLE IF NOT EXISTS `analisis_indikator` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `id_master` int(11) NOT NULL,
- `nomor` int(3) NOT NULL,
- `pertanyaan` varchar(400) NOT NULL,
- `id_tipe` tinyint(4) NOT NULL DEFAULT '1',
- `bobot` tinyint(4) NOT NULL DEFAULT '0',
- `act_analisis` tinyint(1) NOT NULL DEFAULT '2',
- `id_kategori` tinyint(4) NOT NULL,
- `is_publik` tinyint(1) NOT NULL DEFAULT '0',
- PRIMARY KEY (`id`),
- KEY `id_master` (`id_master`,`id_tipe`),
- KEY `id_tipe` (`id_tipe`),
- KEY `id_kategori` (`id_kategori`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- `analisis_kategori_indikator`
 CREATE TABLE IF NOT EXISTS `analisis_kategori_indikator` (
  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
