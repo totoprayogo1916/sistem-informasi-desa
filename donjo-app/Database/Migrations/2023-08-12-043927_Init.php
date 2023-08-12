@@ -92,11 +92,27 @@ class Init extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-        $this->forge->addKey(['id_subjek','id_master','id_periode','id_klassifikasi'], false, false, 'id_subjek');
+        $this->forge->addKey(['id_subjek', 'id_master', 'id_periode', 'id_klassifikasi'], false, false, 'id_subjek');
         $this->forge->addKey('id_master');
         $this->forge->addKey('id_periode');
         $this->forge->addKey('id_klassifikasi');
         $this->forge->createTable('analisis_partisipasi', true);
+
+        // analisis_periode
+        $this->forge->addField([
+            'id'                => ['type' => 'int', 'constraint' => '11', 'auto_increment' => true],
+            'id_master'         => ['type' => 'int', 'constraint' => '11'],
+            'nama'              => ['type' => 'varchar', 'constraint' => '50'],
+            'id_state'          => ['type' => 'tinyint', 'constraint' => '4', 'default' => '1'],
+            'aktif'             => ['type' => 'tinyint', 'constraint' => '1', 'default' => '0'],
+            'keterangan'        => ['type' => 'varchar', 'constraint' => '100'],
+            'tahun_pelaksanaan' => ['type' => 'year', 'constraint' => '4'],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey('id_master');
+        $this->forge->addKey('id_state');
+        $this->forge->createTable('analisis_periode', true);
     }
 
     public function down()
@@ -107,5 +123,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_master', true);
         $this->forge->dropTable('analisis_parameter', true);
         $this->forge->dropTable('analisis_partisipasi', true);
+        $this->forge->dropTable('analisis_periode', true);
     }
 }
