@@ -21,13 +21,6 @@ INSERT INTO `analisis_ref_subjek` (`id`, `subjek`) VALUES
 (2, 'Keluarga / KK'),
 (3, 'Rumah Tangga'),
 (4, 'Kelompok');
--- `analisis_respon`
-CREATE TABLE IF NOT EXISTS `analisis_respon` (
- `id_indikator` int(11) NOT NULL,
- `id_parameter` int(11) NOT NULL,
- `id_subjek` int(11) NOT NULL,
- `id_periode` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 -- `analisis_respon_bukti`
 CREATE TABLE IF NOT EXISTS `analisis_respon_bukti` (
  `id_master` tinyint(4) NOT NULL,

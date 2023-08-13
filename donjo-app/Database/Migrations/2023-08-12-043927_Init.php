@@ -113,6 +113,16 @@ class Init extends Migration
         $this->forge->addKey('id_master');
         $this->forge->addKey('id_state');
         $this->forge->createTable('analisis_periode', true);
+
+        // analisis_respon
+        $this->forge->addField([
+            'id_indikator' => ['type' => 'int', 'constraint' => '11'],
+            'id_parameter' => ['type' => 'int', 'constraint' => '11'],
+            'id_subjek' => ['type' => 'int', 'constraint' => '11'],
+            'id_periode' => ['type' => 'int', 'constraint' => '11'],
+        ]);
+
+        $this->forge->createTable('analisis_respon', true);
     }
 
     public function down()
@@ -124,5 +134,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_parameter', true);
         $this->forge->dropTable('analisis_partisipasi', true);
         $this->forge->dropTable('analisis_periode', true);
+        $this->forge->dropTable('analisis_respon', true);
     }
 }
