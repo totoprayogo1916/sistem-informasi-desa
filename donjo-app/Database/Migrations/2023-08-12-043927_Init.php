@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class Init extends Migration
 {
@@ -118,11 +119,22 @@ class Init extends Migration
         $this->forge->addField([
             'id_indikator' => ['type' => 'int', 'constraint' => '11'],
             'id_parameter' => ['type' => 'int', 'constraint' => '11'],
-            'id_subjek' => ['type' => 'int', 'constraint' => '11'],
-            'id_periode' => ['type' => 'int', 'constraint' => '11'],
+            'id_subjek'    => ['type' => 'int', 'constraint' => '11'],
+            'id_periode'   => ['type' => 'int', 'constraint' => '11'],
         ]);
 
         $this->forge->createTable('analisis_respon', true);
+
+        // analisis_respon_bukti
+        $this->forge->addField([
+            'id_master'  => ['type' => 'tinyint', 'constraint' => 4],
+            'id_periode' => ['type' => 'tinyint', 'constraint' => 4],
+            'id_subjek'  => ['type' => 'int', 'constraint' => 11],
+            'pengesahan' => ['type' => 'varchar', 'constraint' => 100],
+            'tgl_update' => ['type' => 'timestamp', 'default' => new RawSql('CURRENT_TIMESTAMP')],
+        ]);
+
+        $this->forge->createTable('analisis_respon_bukti', true);
     }
 
     public function down()
@@ -135,5 +147,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_partisipasi', true);
         $this->forge->dropTable('analisis_periode', true);
         $this->forge->dropTable('analisis_respon', true);
+        $this->forge->dropTable('analisis_respon_bukti', true);
     }
 }
