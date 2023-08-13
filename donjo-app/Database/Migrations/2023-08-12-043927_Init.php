@@ -147,6 +147,21 @@ class Init extends Migration
 
         $this->forge->addKey(['id_master', 'id_periode', 'id_subjek'], false, true, 'id_master');
         $this->forge->createTable('analisis_respon_hasil', true);
+
+        // area
+        $this->forge->addField([
+            'id'          => ['type' => 'int', 'constraint' => 4, 'auto_increment' => true],
+            'nama'        => ['type' => 'varchar', 'constraint' => 50],
+            'path'        => ['type' => 'text'],
+            'enabled'     => ['type' => 'int', 'constraint' => 11, 'default' => '1'],
+            'ref_polygon' => ['type' => 'int', 'constraint' => 9],
+            'foto'        => ['type' => 'varchar', 'constraint' => 100],
+            'id_cluster'  => ['type' => 'int', 'constraint' => 11],
+            'desk'        => ['type' => 'text'],
+        ]);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('area', true);
     }
 
     public function down()
@@ -161,5 +176,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_respon', true);
         $this->forge->dropTable('analisis_respon_bukti', true);
         $this->forge->dropTable('analisis_respon_hasil', true);
+        $this->forge->dropTable('area', true);
     }
 }

@@ -33,18 +33,6 @@ INSERT INTO `analisis_tipe_indikator` (`id`, `tipe`) VALUES
 (2, 'Pilihan (Multivalue)'),
 (3, 'Isian Angka'),
 (4, 'Isian Tulisan');
--- `area`
-CREATE TABLE IF NOT EXISTS `area` (
- `id` int(4) NOT NULL AUTO_INCREMENT,
- `nama` varchar(50) NOT NULL,
- `path` text NOT NULL,
- `enabled` int(11) NOT NULL DEFAULT '1',
- `ref_polygon` int(9) NOT NULL,
- `foto` varchar(100) NOT NULL,
- `id_cluster` int(11) NOT NULL,
- `desk` text NOT NULL,
- PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- `artikel`
 CREATE TABLE IF NOT EXISTS `artikel` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
