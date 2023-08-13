@@ -135,6 +135,18 @@ class Init extends Migration
         ]);
 
         $this->forge->createTable('analisis_respon_bukti', true);
+
+        // analisis_respon_hasil
+        $this->forge->addField([
+            'id_master'  => ['type' => 'tinyint', 'constraint' => '4'],
+            'id_periode' => ['type' => 'tinyint', 'constraint' => '4'],
+            'id_subjek'  => ['type' => 'int', 'constraint' => '11'],
+            'akumulasi'  => ['type' => 'double', 'constraint' => '8,3'],
+            'tgl_update' => ['type' => 'timestamp', 'default' => new RawSql('CURRENT_TIMESTAMP')],
+        ]);
+
+        $this->forge->addKey(['id_master', 'id_periode', 'id_subjek'], false, true, 'id_master');
+        $this->forge->createTable('analisis_respon_hasil', true);
     }
 
     public function down()
@@ -148,5 +160,6 @@ class Init extends Migration
         $this->forge->dropTable('analisis_periode', true);
         $this->forge->dropTable('analisis_respon', true);
         $this->forge->dropTable('analisis_respon_bukti', true);
+        $this->forge->dropTable('analisis_respon_hasil', true);
     }
 }
