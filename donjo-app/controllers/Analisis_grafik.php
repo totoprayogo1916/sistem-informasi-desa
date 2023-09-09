@@ -10,7 +10,7 @@ class Analisis_grafik extends BaseController
     {
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1') {
-            redirect('siteman');
+        redirect('siteman');
         }
     }
 
