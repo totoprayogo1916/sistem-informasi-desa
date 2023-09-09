@@ -1,16 +1,14 @@
 name: PHP-CS-FIXER
 
-on:
-  pull_request_target:
-    types:
-      - opened
-      - edited
-      - synchronize
+on: 
+  pull_request:
     paths:
       - "**.php"
       - "!donjo-app/Views/**"
       - "!donjo-app/Libraries/**"
       - "!donjo-app/third_party/**"
+  pull_request_target:
+    
 
 permissions:
   actions: write
