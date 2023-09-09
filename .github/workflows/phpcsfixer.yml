@@ -28,5 +28,5 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: intl
       - run: composer install --ansi --no-interaction
-      - run: donjo-sys/bin/rector process ${{ matrix.paths }} --dry-run --no-progress-bar
+      - run: donjo-sys/bin/rector process ${{ matrix.paths }} --dry-run
       - run: donjo-sys/bin/php-cs-fixer fix --verbose --ansi --dry-run --using-cache=no --diff 
