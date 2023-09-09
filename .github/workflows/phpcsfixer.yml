@@ -4,7 +4,6 @@ on:
   pull_request:
     paths:
       - "**.php"
-    paths-ignore:
       - "!donjo-app/Views/**"
       - "!donjo-app/Libraries/**"
       - "!donjo-app/third_party/**"
@@ -19,6 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         php-versions: ['7.4', '8.0']
+        paths:
+          - donjo-app
         
     steps:
       - uses: actions/checkout@v4
