@@ -1,9 +1,12 @@
-name: Fixer, Styling & Optimizer
+name: PHP-CS-FIXER
 
 on:
   pull_request:
+    paths:
+      - "**.php"
     paths-ignore:
       - "donjo-app/Views/**.php"
+      - "donjo-sys/**"
 
 permissions:
   actions: write
@@ -11,7 +14,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  php-cs-fixer:
+  fix:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
