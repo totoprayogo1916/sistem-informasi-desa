@@ -1,6 +1,9 @@
 name: Fixer, Styling & Optimizer
 
-on: [workflow_dispatch]
+on:
+  pull_request:
+    paths-ignore:
+      - "donjo-app/Views/**.php"
 
 permissions:
   actions: write
