@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "**.php"
+    paths-ignore:
       - "!donjo-app/Views/**"
       - "!donjo-app/Libraries/**"
       - "!donjo-app/third_party/**"
