@@ -11,19 +11,22 @@ on:
     
 
 permissions:
-  actions: write
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
   fix:
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['7.4', '8.0']
+        
     steps:
       - uses: actions/checkout@v4
-      - run: composer install
-      - run: composer run csfix
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: shivammathur/setup-php@v2
         with:
-          commit_message: Fixed & optimize code
-          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
- 
+          php-version: ${{ matrix.php-versions }}
+          extensions: intl
+      - run: composer install --ansi --no-interaction
+      - run: donjo-sys/bin/rector process ${{ matrix.paths }} --dry-run --no-progress-bar
+      - run: donjo-sys/bin/php-cs-fixer fix --verbose --ansi --dry-run --using-cache=no --diff 
