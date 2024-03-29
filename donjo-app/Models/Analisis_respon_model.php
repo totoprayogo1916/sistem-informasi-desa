@@ -39,7 +39,7 @@ class Analisis_respon_model extends CI_Model
         $sql .= $this->rw_sql();
         $sql .= $this->rt_sql();
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -167,7 +167,7 @@ class Analisis_respon_model extends CI_Model
         $sql .= $this->rt_sql();
         $sql .= $this->isi_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -234,7 +234,7 @@ class Analisis_respon_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql, $per);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -274,7 +274,7 @@ class Analisis_respon_model extends CI_Model
         } else {
             $sql       = 'SELECT id_master FROM analisis_periode WHERE id = ?';
             $query     = $this->db->query($sql, $per);
-            $id_master = $query->row_array();
+            $id_master = $query->getRowArray();
             $id_master = $id_master['id_master'];
         }
         $ia = 0;
@@ -362,7 +362,7 @@ class Analisis_respon_model extends CI_Model
 
                         $sql   = 'SELECT * FROM analisis_parameter u WHERE jawaban = ? AND id_indikator = ?';
                         $query = $this->db->query($sql, [$id_p, $indikator]);
-                        $dx    = $query->row_array();
+                        $dx    = $query->getRowArray();
                         if (! $dx) {
                             $data['id_indikator'] = $indikator;
                             $data['jawaban']      = $id_p;
@@ -371,7 +371,7 @@ class Analisis_respon_model extends CI_Model
 
                             $sql   = 'SELECT * FROM analisis_parameter u WHERE jawaban = ? AND id_indikator = ?';
                             $query = $this->db->query($sql, [$id_p, $indikator]);
-                            $dx    = $query->row_array();
+                            $dx    = $query->getRowArray();
 
                             $data['id_parameter'] = $dx['id'];
                             $data['id_indikator'] = $indikator;
@@ -400,7 +400,7 @@ class Analisis_respon_model extends CI_Model
 
                         $sql   = 'SELECT * FROM analisis_parameter u WHERE jawaban = ? AND id_indikator = ?';
                         $query = $this->db->query($sql, [$id_p, $indikator]);
-                        $dx    = $query->row_array();
+                        $dx    = $query->getRowArray();
                         if (! $dx) {
                             $data['id_indikator'] = $indikator;
                             $data['jawaban']      = $id_p;
@@ -409,7 +409,7 @@ class Analisis_respon_model extends CI_Model
 
                             $sql   = 'SELECT * FROM analisis_parameter u WHERE jawaban = ? AND id_indikator = ?';
                             $query = $this->db->query($sql, [$id_p, $indikator]);
-                            $dx    = $query->row_array();
+                            $dx    = $query->getRowArray();
 
                             $data2['id_parameter'] = $dx['id'];
                             $data2['id_indikator'] = $indikator;
@@ -432,7 +432,7 @@ class Analisis_respon_model extends CI_Model
 
             $sql   = 'SELECT SUM(i.bobot * nilai) as jml FROM analisis_respon r LEFT JOIN analisis_indikator i ON r.id_indikator = i.id LEFT JOIN analisis_parameter z ON r.id_parameter = z.id WHERE r.id_subjek = ? AND i.act_analisis=1 AND r.id_periode=?';
             $query = $this->db->query($sql, [$id, $per]);
-            $dx    = $query->row_array();
+            $dx    = $query->getRowArray();
 
             $upx['id_master']  = $id_master;
             $upx['akumulasi']  = 0 + $dx['jml'];
@@ -478,7 +478,7 @@ class Analisis_respon_model extends CI_Model
             $query = $this->db->query($sql, [$id, $per, $in]);
         }
 
-        $data = $query->result_array();
+        $data = $query->getResultArray();
 
         $i = 0;
 
@@ -498,7 +498,7 @@ class Analisis_respon_model extends CI_Model
         $sql   = 'SELECT s.id as id_parameter,s.jawaban FROM analisis_respon r LEFT JOIN analisis_parameter s ON r.id_parameter = s.id WHERE r.id_indikator = ? AND r.id_subjek = ? AND r.id_periode=?';
         $query = $this->db->query($sql, [$in, $id, $per]);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_indikator($id = 0)
@@ -507,7 +507,7 @@ class Analisis_respon_model extends CI_Model
 
         $sql   = 'SELECT u.id,u.id_kategori,u.nomor,u.id_tipe,u.pertanyaan,k.kategori FROM analisis_indikator u LEFT JOIN analisis_kategori_indikator k ON u.id_kategori = k.id WHERE u.id_master = ? ORDER BY u.id_kategori,u.nomor ASC';
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -541,7 +541,7 @@ class Analisis_respon_model extends CI_Model
             $query = $this->db->query($sql, [$id, $per, $in]);
         }
 
-        $data = $query->result_array();
+        $data = $query->getResultArray();
 
         $i = 0;
 
@@ -561,25 +561,25 @@ class Analisis_respon_model extends CI_Model
         $sql   = 'SELECT s.id as id_parameter,s.jawaban FROM analisis_respon r LEFT JOIN analisis_parameter s ON r.id_parameter = s.id WHERE r.id_indikator = ? AND r.id_subjek = ? AND r.id_periode=?';
         $query = $this->db->query($sql, [$in, $id, $per]);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_indikator_child($id = 0)
     {
         $sql      = 'SELECT id_child FROM analisis_master WHERE id = ? ';
         $query    = $this->db->query($sql, $_SESSION['analisis_master']);
-        $id_child = $query->row_array();
+        $id_child = $query->getRowArray();
         $id_child = $id_child['id_child'];
 
         $sql   = 'SELECT id FROM analisis_periode WHERE id_master = ? AND aktif = 1';
         $query = $this->db->query($sql, $id_child);
-        $per   = $query->row_array();
+        $per   = $query->getRowArray();
         $per   = $per['id'];
 
         $sql = 'SELECT * FROM analisis_indikator u WHERE id_master = ? ';
         $sql .= ' ORDER BY nomor';
         $query = $this->db->query($sql, $id_child);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -605,12 +605,12 @@ class Analisis_respon_model extends CI_Model
     {
         $sql      = 'SELECT id_child FROM analisis_master WHERE id = ? ';
         $query    = $this->db->query($sql, $_SESSION['analisis_master']);
-        $id_child = $query->row_array();
+        $id_child = $query->getRowArray();
         $id_child = $id_child['id_child'];
 
         $sql   = 'SELECT id FROM analisis_periode WHERE id_master = ? AND aktif = 1';
         $query = $this->db->query($sql, $id_child);
-        $per   = $query->row_array();
+        $per   = $query->getRowArray();
         $per   = $per['id'];
 
         return $per;
@@ -623,7 +623,7 @@ class Analisis_respon_model extends CI_Model
         $sql = 'SELECT pengesahan FROM analisis_respon_bukti WHERE id_subjek = ? AND id_master = ? AND id_periode = ? ';
         $sql .= ' ORDER BY tgl_update DESC';
         $query = $this->db->query($sql, [$id, $_SESSION['analisis_master'], $per]);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         return $data;
     }
@@ -650,7 +650,7 @@ class Analisis_respon_model extends CI_Model
         // $sql = "SELECT u.*,p.nama FROM tweb_keluarga u LEFT JOIN tweb_penduduk p ON u.nik_kepala = p.id WHERE u.id=?";
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_anggota($id = 0)
@@ -669,7 +669,7 @@ class Analisis_respon_model extends CI_Model
             // $sql = "SELECT u.*,p.nama FROM tweb_keluarga u LEFT JOIN tweb_penduduk p ON u.nik_kepala = p.id WHERE u.id=?";
             $query = $this->db->query($sql, $id);
 
-            return $query->result_array();
+            return $query->getResultArray();
         }
 
         return null;
@@ -683,7 +683,7 @@ class Analisis_respon_model extends CI_Model
         $sql .= $order_sql;
 
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $per = $this->get_aktif_periode();
         $i   = 0;
@@ -694,7 +694,7 @@ class Analisis_respon_model extends CI_Model
             if ($data[$i]['id_tipe'] === 1 || $data[$i]['id_tipe'] === 2) {
                 $sql2            = 'SELECT i.id,i.kode_jawaban,i.jawaban FROM analisis_parameter i WHERE i.id_indikator = ? ORDER BY i.kode_jawaban ASC ';
                 $query2          = $this->db->query($sql2, $data[$i]['id']);
-                $respon2         = $query2->result_array();
+                $respon2         = $query2->getResultArray();
                 $data[$i]['par'] = $respon2;
             } else {
                 $data[$i]['par'] = null;
@@ -735,7 +735,7 @@ class Analisis_respon_model extends CI_Model
 
         $sql       = 'SELECT * FROM analisis_indikator WHERE id_master = ? ORDER BY nomor';
         $query     = $this->db->query($sql, $_SESSION['analisis_master']);
-        $indikator = $query->result_array();
+        $indikator = $query->getResultArray();
 
         $subjek = $_SESSION['subjek_tipe'];
 
@@ -767,7 +767,7 @@ class Analisis_respon_model extends CI_Model
         $sql .= $order_sql;
 
         $query = $this->db->query($sql, $per);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -783,7 +783,7 @@ class Analisis_respon_model extends CI_Model
                 // $sql2 	= "SELECT kode_jawaban WHERE r.id_periode = ? AND r.id_subjek = ? ORDER BY i.nomor ";
 
                 $query2          = $this->db->query($sql2, [$per, $data[$i]['id']]);
-                $par             = $query2->result_array();
+                $par             = $query2->getResultArray();
                 $data[$i]['par'] = $par;
 
             //	$j++;
@@ -814,7 +814,7 @@ class Analisis_respon_model extends CI_Model
         $sql = 'SELECT u.* FROM analisis_indikator u WHERE u.id_master = ? ';
         $sql .= $order_sql;
         $query = $this->db->query($sql, $master);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -824,7 +824,7 @@ class Analisis_respon_model extends CI_Model
 
             $sql2            = 'SELECT id_parameter FROM analisis_respon WHERE id_indikator = ? AND asign = 1 ';
             $query2          = $this->db->query($sql2, $data[$i]['id']);
-            $par             = $query2->result_array();
+            $par             = $query2->getResultArray();
             $data[$i]['par'] = $par;
 
             $i++;
@@ -842,7 +842,7 @@ class Analisis_respon_model extends CI_Model
         $sql = 'SELECT u.* FROM analisis_indikator u WHERE u.id_master = ? ';
         $sql .= $order_sql;
         $query = $this->db->query($sql, $master);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -853,7 +853,7 @@ class Analisis_respon_model extends CI_Model
             if ($p === 1) {
                 $sql2            = 'SELECT * FROM analisis_parameter WHERE id_indikator = ? AND asign = 1 ';
                 $query2          = $this->db->query($sql2, $data[$i]['id']);
-                $par             = $query2->result_array();
+                $par             = $query2->getResultArray();
                 $data[$i]['par'] = $par;
             }
 
@@ -873,7 +873,7 @@ class Analisis_respon_model extends CI_Model
 
         $sql   = 'SELECT DISTINCT(id_subjek) AS id FROM analisis_respon WHERE id_periode = ? ';
         $query = $this->db->query($sql, $per);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $sql = 'DELETE FROM analisis_respon_hasil WHERE id_subjek = 0';
         $this->db->query($sql);
@@ -891,7 +891,7 @@ class Analisis_respon_model extends CI_Model
 
             $sql   = 'SELECT SUM(i.bobot * nilai) as jml FROM analisis_respon r LEFT JOIN analisis_indikator i ON r.id_indikator = i.id LEFT JOIN analisis_parameter z ON r.id_parameter = z.id WHERE r.id_subjek = ? AND i.act_analisis=1 AND r.id_periode=?';
             $query = $this->db->query($sql, [$data[$i]['id'], $per]);
-            $dx    = $query->row_array();
+            $dx    = $query->getRowArray();
 
             $upx[$i]['id_master']  = $_SESSION['analisis_master'];
             $upx[$i]['akumulasi']  = 0 + $dx['jml'];
@@ -911,7 +911,7 @@ class Analisis_respon_model extends CI_Model
 
         $sql   = 'SELECT SUM(i.bobot * nilai) as jml FROM analisis_respon r LEFT JOIN analisis_indikator i ON r.id_indikator = i.id LEFT JOIN analisis_parameter z ON r.id_parameter = z.id WHERE r.id_subjek = ? AND i.act_analisis=1 AND r.id_periode=?';
         $query = $this->db->query($sql, [$id, $per]);
-        $dx    = $query->row_array();
+        $dx    = $query->getRowArray();
 
         $upx['id_master']  = $_SESSION['analisis_master'];
         $upx['akumulasi']  = 0 + $dx['jml'];
@@ -935,7 +935,7 @@ class Analisis_respon_model extends CI_Model
 
         $sql       = 'SELECT * FROM analisis_indikator WHERE id_master=? ORDER BY id ASC';
         $query     = $this->db->query($sql, $_SESSION['analisis_master']);
-        $indikator = $query->result_array();
+        $indikator = $query->getResultArray();
         $jml       = count($indikator);
 
         $data  = new Spreadsheet_Excel_Reader($_FILES['respon']['tmp_name']);
@@ -1002,7 +1002,7 @@ class Analisis_respon_model extends CI_Model
                 if (strlen($id_subjek) > 14 && $subjek === 1) {
                     $sqls      = 'SELECT id FROM tweb_penduduk WHERE nik = ?;';
                     $querys    = $this->db->query($sqls, [$id_subjek]);
-                    $isbj      = $querys->row_array();
+                    $isbj      = $querys->getRowArray();
                     $id_subjek = $isbj['id'];
                 }
 
@@ -1015,7 +1015,7 @@ class Analisis_respon_model extends CI_Model
                         if ($indi['id_tipe'] === 1) {
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ?;';
                             $query = $this->db->query($sql, [$indi['id'], $isi]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
 
                             if ($param) {
                                 $in_param = $param['id'];
@@ -1042,7 +1042,7 @@ class Analisis_respon_model extends CI_Model
                                 // echo $id_isi[$q]." ";
                                 $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ? ;';
                                 $query = $this->db->query($sql, [$indi['id'], $id_isi[$q]]);
-                                $param = $query->row_array();
+                                $param = $query->getRowArray();
 
                                 if ($param['id'] !== '') {
                                     $in_param                   = $param['id'];
@@ -1057,7 +1057,7 @@ class Analisis_respon_model extends CI_Model
                         } else {
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                             $query = $this->db->query($sql, [$indi['id'], $isi]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
 
                             // apakah sdh ada jawaban yg sama
                             if ($param) {
@@ -1071,7 +1071,7 @@ class Analisis_respon_model extends CI_Model
 
                                 $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                                 $query = $this->db->query($sql, [$indi['id'], $isi]);
-                                $param = $query->row_array();
+                                $param = $query->getRowArray();
                                 // if($param){
                                 $in_param = $param['id'];
                                 // }else{
@@ -1120,11 +1120,11 @@ class Analisis_respon_model extends CI_Model
         $mas       = $_SESSION['analisis_master'];
         $sql       = 'SELECT * FROM analisis_indikator WHERE id_master=? ORDER BY id ASC';
         $query     = $this->db->query($sql, $_SESSION['analisis_master']);
-        $indikator = $query->result_array();
+        $indikator = $query->getResultArray();
 
         $sql   = 'SELECT * FROM a_jiwa WHERE 1';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $sql = 'DELETE FROM analisis_respon WHERE id_periode=?';
         $this->db->query($sql, [$per]);
@@ -1138,7 +1138,7 @@ class Analisis_respon_model extends CI_Model
             if (strlen($id_subjek) > 14 && $subjek === 1) {
                 $sqls      = 'SELECT id FROM tweb_penduduk WHERE nik = ?;';
                 $querys    = $this->db->query($sqls, [$id_subjek]);
-                $isbj      = $querys->row_array();
+                $isbj      = $querys->getRowArray();
                 $id_subjek = $isbj['id'];
             }
 
@@ -1153,7 +1153,7 @@ class Analisis_respon_model extends CI_Model
                     if ($indi['id_tipe'] === 1) {
                         $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ?;';
                         $query = $this->db->query($sql, [$indi['id'], $isi]);
-                        $param = $query->row_array();
+                        $param = $query->getRowArray();
 
                         if ($param) {
                             $in_param = $param['id'];
@@ -1180,7 +1180,7 @@ class Analisis_respon_model extends CI_Model
                             // echo $id_isi[$q]." ";
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ? ;';
                             $query = $this->db->query($sql, [$indi['id'], $id_isi[$q]]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
 
                             if ($param['id'] !== '') {
                                 $in_param                   = $param['id'];
@@ -1195,7 +1195,7 @@ class Analisis_respon_model extends CI_Model
                     } else {
                         $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                         $query = $this->db->query($sql, [$indi['id'], $isi]);
-                        $param = $query->row_array();
+                        $param = $query->getRowArray();
 
                         // apakah sdh ada jawaban yg sama
                         if ($param) {
@@ -1209,7 +1209,7 @@ class Analisis_respon_model extends CI_Model
 
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                             $query = $this->db->query($sql, [$indi['id'], $isi]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
                             // if($param){
                             $in_param = $param['id'];
                             // }else{
@@ -1257,11 +1257,11 @@ class Analisis_respon_model extends CI_Model
         $mas       = $_SESSION['analisis_master'];
         $sql       = 'SELECT * FROM analisis_indikator WHERE id_master=? ORDER BY id ASC';
         $query     = $this->db->query($sql, $_SESSION['analisis_master']);
-        $indikator = $query->result_array();
+        $indikator = $query->getResultArray();
 
         $sql   = 'SELECT * FROM a_rts WHERE 1';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $sql = 'DELETE FROM analisis_respon WHERE id_periode=?';
         $this->db->query($sql, [$per]);
@@ -1285,7 +1285,7 @@ class Analisis_respon_model extends CI_Model
                     if ($indi['id_tipe'] === 1) {
                         $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ?;';
                         $query = $this->db->query($sql, [$indi['id'], $isi]);
-                        $param = $query->row_array();
+                        $param = $query->getRowArray();
 
                         if ($param) {
                             $in_param = $param['id'];
@@ -1312,7 +1312,7 @@ class Analisis_respon_model extends CI_Model
                             // echo $id_isi[$q]." ";
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND kode_jawaban = ? ;';
                             $query = $this->db->query($sql, [$indi['id'], $id_isi[$q]]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
 
                             if ($param['id'] !== '') {
                                 $in_param                   = $param['id'];
@@ -1327,7 +1327,7 @@ class Analisis_respon_model extends CI_Model
                     } else {
                         $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                         $query = $this->db->query($sql, [$indi['id'], $isi]);
-                        $param = $query->row_array();
+                        $param = $query->getRowArray();
 
                         // apakah sdh ada jawaban yg sama
                         if ($param) {
@@ -1341,7 +1341,7 @@ class Analisis_respon_model extends CI_Model
 
                             $sql   = 'SELECT id FROM analisis_parameter WHERE id_indikator = ? AND jawaban = ?;';
                             $query = $this->db->query($sql, [$indi['id'], $isi]);
-                            $param = $query->row_array();
+                            $param = $query->getRowArray();
                             // if($param){
                             $in_param = $param['id'];
                             // }else{
@@ -1381,7 +1381,7 @@ class Analisis_respon_model extends CI_Model
     {
         $sql   = 'SELECT * FROM analisis_periode WHERE aktif=1 AND id_master=?';
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
 
         return $data['id'];
     }
@@ -1391,14 +1391,14 @@ class Analisis_respon_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_master WHERE id=?';
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_periode()
     {
         $sql   = 'SELECT * FROM analisis_periode WHERE aktif=1 AND id_master=?';
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
 
         return $data['nama'];
     }
@@ -1408,7 +1408,7 @@ class Analisis_respon_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt = '0' AND rw = '0' ";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rw($dusun = '')
@@ -1416,7 +1416,7 @@ class Analisis_respon_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt = '0' AND dusun = ? AND rw <> '0'";
         $query = $this->db->query($sql, $dusun);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rt($dusun = '', $rw = '')
@@ -1424,6 +1424,6 @@ class Analisis_respon_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rw = ? AND dusun = ? AND rt <> '0'";
         $query = $this->db->query($sql, [$rw, $dusun]);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

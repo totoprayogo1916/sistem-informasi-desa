@@ -22,7 +22,7 @@ class KategoriModel extends CI_Model
 
         $query = $this->db->get($this->table);
         if ($query->num_rows() > 0) {
-            return $query->row_array();
+            return $query->getRowArray();
         }
 
         return false;
@@ -37,7 +37,7 @@ class KategoriModel extends CI_Model
     {
         $query = $this->db->order_by('urut', 'ASC')->get($this->table);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     /**
@@ -51,7 +51,7 @@ class KategoriModel extends CI_Model
     {
         $query = $this->db->where('tipe', $tipe)->get($this->table);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     /**

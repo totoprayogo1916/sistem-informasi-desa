@@ -12,7 +12,7 @@ class Plan_line_model extends CI_Model
     {
         $sql   = 'SELECT nama FROM line';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -55,7 +55,7 @@ class Plan_line_model extends CI_Model
         $sql = 'SELECT COUNT(id) AS id FROM line WHERE tipe = 0 ';
         $sql .= $this->search_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -94,7 +94,7 @@ class Plan_line_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -201,7 +201,7 @@ class Plan_line_model extends CI_Model
         $sql = 'SELECT * FROM line WHERE parrent = ? AND tipe = 2 ';
 
         $query = $this->db->query($sql, $line);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -328,7 +328,7 @@ class Plan_line_model extends CI_Model
         $sql   = 'SELECT * FROM line WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function line_show()
@@ -336,7 +336,7 @@ class Plan_line_model extends CI_Model
         $sql   = 'SELECT * FROM line WHERE enabled=?';
         $query = $this->db->query($sql, 1);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_line_atas()
@@ -344,7 +344,7 @@ class Plan_line_model extends CI_Model
         $sql = 'SELECT m.* FROM line m WHERE m.parrent = 1 AND m.enabled = 1 AND m.tipe = 1';
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
         $url   = site_url('first');
         $i     = 0;
 
@@ -353,7 +353,7 @@ class Plan_line_model extends CI_Model
 
             $sql2  = 'SELECT s.* FROM line s WHERE s.parrent = ? AND s.enabled = 1 AND s.tipe = 3';
             $query = $this->db->query($sql2, $data[$i]['id']);
-            $data2 = $query->result_array();
+            $data2 = $query->getResultArray();
 
             if ($data2) {
                 $data[$i]['line'] .= '<ul>';
@@ -377,7 +377,7 @@ class Plan_line_model extends CI_Model
         $sql = 'SELECT m.* FROM line m WHERE m.parrent = 1 AND m.enabled = 1 AND m.tipe = 2';
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
         $url   = site_url('first');
         $i     = 0;
 
@@ -386,7 +386,7 @@ class Plan_line_model extends CI_Model
 
             $sql2  = 'SELECT s.* FROM line s WHERE s.parrent = ? AND s.enabled = 1 AND s.tipe = 3';
             $query = $this->db->query($sql2, $data[$i]['id']);
-            $data2 = $query->result_array();
+            $data2 = $query->getResultArray();
 
             if ($data2) {
                 $data[$i]['line'] .= '<ul>';

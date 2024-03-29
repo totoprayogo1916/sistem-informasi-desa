@@ -12,7 +12,7 @@ class Analisis_master_model extends CI_Model
     {
         $sql   = 'SELECT nama FROM analisis_master';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -67,7 +67,7 @@ class Analisis_master_model extends CI_Model
         $sql .= $this->filter_sql();
         $sql .= $this->state_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -114,7 +114,7 @@ class Analisis_master_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -224,7 +224,7 @@ class Analisis_master_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_master WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_subjek()
@@ -232,7 +232,7 @@ class Analisis_master_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_ref_subjek';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_kelompok()
@@ -240,7 +240,7 @@ class Analisis_master_model extends CI_Model
         $sql   = 'SELECT * FROM kelompok_master';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_analisis_child()
@@ -248,6 +248,6 @@ class Analisis_master_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_master WHERE subjek_tipe = 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

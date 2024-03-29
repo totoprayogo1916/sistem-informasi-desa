@@ -14,7 +14,7 @@ class First_gallery_m extends CI_Model
 
         $sql      = "SELECT COUNT(id) AS id FROM gambar_gallery WHERE enabled=1 AND tipe='0'";
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -35,7 +35,7 @@ class First_gallery_m extends CI_Model
 
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function paging2($gal = 0, $p = 1)
@@ -44,7 +44,7 @@ class First_gallery_m extends CI_Model
 
         $sql      = 'SELECT COUNT(id) AS id FROM gambar_gallery WHERE enabled=1 AND parrent=?';
         $query    = $this->db->query($sql, $gal);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -65,7 +65,7 @@ class First_gallery_m extends CI_Model
 
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function get_parrent($parrent)
@@ -73,7 +73,7 @@ class First_gallery_m extends CI_Model
         $sql   = "SELECT * FROM gambar_gallery WHERE id='{$parrent}'";
         $query = $this->db->query($sql);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function gallery_widget()
@@ -81,6 +81,6 @@ class First_gallery_m extends CI_Model
         $sql   = "SELECT * FROM gambar_gallery WHERE enabled='1' ORDER BY RAND() LIMIT 4";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

@@ -12,7 +12,7 @@ class First_artikel_m extends CI_Model
     {
         $sql   = 'SELECT a.*,u.nama AS owner FROM artikel a LEFT JOIN user u ON a.id_user = u.id WHERE headline = 1 ORDER BY tgl_upload DESC LIMIT 1 ';
         $query = $this->db->query($sql);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
         if (empty($data)) {
             $data = null;
         } else {
@@ -27,7 +27,7 @@ class First_artikel_m extends CI_Model
         $sql   = "SELECT a.isi FROM artikel a LEFT JOIN kategori k ON a.id_kategori = k.id WHERE k.kategori = 'teks_berjalan' AND k.enabled = 1";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function get_widget()
@@ -35,7 +35,7 @@ class First_artikel_m extends CI_Model
         $sql   = 'SELECT * FROM widget LIMIT 1 ';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function paging($p = 1)
@@ -47,7 +47,7 @@ class First_artikel_m extends CI_Model
 			WHERE ((a.enabled=1) AND (headline <> 1) AND (k.tipe = 1)) AND k.kategori <> 'teks_berjalan'
 			ORDER BY a.tgl_upload DESC";
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -68,7 +68,7 @@ class First_artikel_m extends CI_Model
             $sql .= 'AND ((id_kategori = ' . $id . ') OR (parrent = ' . $id . '))';
         }
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -94,8 +94,8 @@ class First_artikel_m extends CI_Model
         }
 
         $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
 
             $i = 0;
 
@@ -119,7 +119,7 @@ class First_artikel_m extends CI_Model
     {
         $sql   = 'SELECT a.*,u.nama AS owner,k.kategori AS kategori FROM artikel a LEFT JOIN user u ON a.id_user = u.id LEFT JOIN kategori k ON a.id_kategori = k.id WHERE a.enabled=? ORDER BY a.tgl_upload DESC LIMIT 7 ';
         $query = $this->db->query($sql, 1);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -143,7 +143,7 @@ class First_artikel_m extends CI_Model
 
         $sql      = 'SELECT COUNT(a.id) AS id FROM artikel a LEFT JOIN user u ON a.id_user = u.id LEFT JOIN kategori k ON a.id_kategori = k.id WHERE a.enabled=1';
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -163,8 +163,8 @@ class First_artikel_m extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql, 1);
-        $data  = $query->result_array();
-        if ($query->num_rows() > 0) {
+        $data  = $query->getResultArray();
+        if ($query->getNumRows() > 0) {
             $i = 0;
 
             while ($i < count($data)) {
@@ -192,8 +192,8 @@ class First_artikel_m extends CI_Model
 		UNION SELECT gambar3 FROM artikel WHERE enabled=1
 		ORDER BY RAND() LIMIT 10 ';
         $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
         } else {
             $data = false;
         }
@@ -211,8 +211,8 @@ class First_artikel_m extends CI_Model
 		WHERE a.id_kategori='1003' AND a.enabled=1
 		ORDER BY a.tgl_upload DESC";
         $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
         } else {
             $data = false;
         }
@@ -225,14 +225,14 @@ class First_artikel_m extends CI_Model
         $sql   = "SELECT a.*,u.nama AS owner,k.kategori AS kategori FROM artikel a LEFT JOIN user u ON a.id_user = u.id LEFT JOIN kategori k ON a.id_kategori = k.id WHERE id_kategori='4' ORDER BY a.tgl_upload DESC";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function komentar_show()
     {
         $sql   = 'SELECT * FROM komentar WHERE enabled=? AND id_artikel <> 775 order by tgl_upload desc limit 10';
         $query = $this->db->query($sql, 1);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -254,8 +254,8 @@ class First_artikel_m extends CI_Model
     {
         $sql   = 'SELECT a.*,u.nama AS owner FROM artikel a LEFT JOIN user u ON a.id_user = u.id WHERE a.id=?';
         $query = $this->db->query($sql, $id);
-        if ($query->num_rows() > 0) {
-            $data = $query->row_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getRowArray();
         } else {
             $data = false;
         }
@@ -273,8 +273,8 @@ class First_artikel_m extends CI_Model
         $sql .= ' ORDER BY a.tgl_upload DESC ';
         $sql .= $paging_sql;
         $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
         } else {
             $data = false;
         }
@@ -303,8 +303,8 @@ class First_artikel_m extends CI_Model
     {
         $sql   = 'SELECT * FROM komentar WHERE id_artikel = ? ORDER BY tgl_upload DESC';
         $query = $this->db->query($sql, $id);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
 
             $i = 0;
 
@@ -322,8 +322,8 @@ class First_artikel_m extends CI_Model
     {
         $sql   = 'SELECT * FROM media_sosial WHERE enabled=1';
         $query = $this->db->query($sql);
-        if ($query->num_rows() > 0) {
-            $data = $query->result_array();
+        if ($query->getNumRows() > 0) {
+            $data = $query->getResultArray();
         } else {
             $data = false;
         }

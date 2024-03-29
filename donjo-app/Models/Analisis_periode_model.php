@@ -12,7 +12,7 @@ class Analisis_periode_model extends CI_Model
     {
         $sql   = 'SELECT nama FROM analisis_periode';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -67,7 +67,7 @@ class Analisis_periode_model extends CI_Model
         $sql .= $this->master_sql();
         $sql .= $this->state_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -114,7 +114,7 @@ class Analisis_periode_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -144,7 +144,7 @@ class Analisis_periode_model extends CI_Model
         if ($dp === 1) {
             $sqld   = 'SELECT id FROM analisis_periode WHERE id_master=? ORDER BY id DESC LIMIT 1';
             $queryd = $this->db->query($sqld, $_SESSION['analisis_master']);
-            $dpd    = $queryd->row_array();
+            $dpd    = $queryd->getRowArray();
             $sblm   = $dpd['id'];
         }
 
@@ -160,12 +160,12 @@ class Analisis_periode_model extends CI_Model
         if ($dp === 1) {
             $sqld   = 'SELECT id FROM analisis_periode WHERE id_master=? ORDER BY id DESC LIMIT 1';
             $queryd = $this->db->query($sqld, $_SESSION['analisis_master']);
-            $dpd    = $queryd->row_array();
+            $dpd    = $queryd->getRowArray();
             $skrg   = $dpd['id'];
 
             $sql   = 'SELECT id_subjek,id_indikator,id_parameter FROM analisis_respon WHERE id_periode = ? ';
             $query = $this->db->query($sql, $sblm);
-            $data  = $query->result_array();
+            $data  = $query->getResultArray();
 
             $i = 0;
 
@@ -243,7 +243,7 @@ class Analisis_periode_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_periode WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_analisis_master()
@@ -251,7 +251,7 @@ class Analisis_periode_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_master WHERE id=?';
         $query = $this->db->query($sql, $_SESSION['analisis_master']);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_state()
@@ -259,6 +259,6 @@ class Analisis_periode_model extends CI_Model
         $sql   = 'SELECT * FROM analisis_ref_state';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

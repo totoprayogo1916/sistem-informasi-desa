@@ -14,7 +14,7 @@ class Config_model extends CI_Model
         // if(!$query){
         $sql   = 'SELECT * FROM tweb_surat_format WHERE 1';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         foreach ($data as $dat) {
             $string = $dat['url_surat'];
@@ -64,10 +64,10 @@ class Config_model extends CI_Model
         $query = $this->db->query($sql);
 
         if ($return_array) {
-            return $query->result_array();
+            return $query->getResultArray();
         }
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function insert_()
@@ -234,7 +234,7 @@ class Config_model extends CI_Model
     {
         $sql   = 'SELECT * FROM analisis_parameter WHERE asign = 1 ORDER BY id_indikator';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $m = 0;
@@ -245,7 +245,7 @@ class Config_model extends CI_Model
 
             $sql1   = 'SELECT max(kode_jawaban) AS nil FROM analisis_parameter WHERE id_indikator = ?';
             $query1 = $this->db->query($sql1, $data[$i]['id_indikator']);
-            $m      = $query1->row_array();
+            $m      = $query1->getRowArray();
             $n      = ($m['nil'] + 1) - $data[$i]['kode_jawaban'];
 
             $up['nilai'] = $n;

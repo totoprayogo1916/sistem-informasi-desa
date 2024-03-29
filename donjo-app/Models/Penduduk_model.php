@@ -12,7 +12,7 @@ class Penduduk_model extends CI_Model
     {
         $sql   = 'SELECT nama FROM tweb_penduduk';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -34,7 +34,7 @@ class Penduduk_model extends CI_Model
     {
         $sql   = 'SELECT no_kk FROM tweb_keluarga WHERE 1 ';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -53,7 +53,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT no_kk FROM tweb_keluarga WHERE 1 ';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function dn()
@@ -61,7 +61,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT nik FROM tweb_penduduk WHERE 1 ';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function search_sql()
@@ -364,7 +364,7 @@ class Penduduk_model extends CI_Model
         $sql .= $this->umur_sql();
         $sql .= $this->log_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -445,7 +445,7 @@ class Penduduk_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -502,7 +502,7 @@ class Penduduk_model extends CI_Model
         $sql .= $this->status_penduduk_sql();
         $sql .= $this->hamil_sql();
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -529,7 +529,7 @@ class Penduduk_model extends CI_Model
         return $data;
     }
 
-    public function insert()
+    public function insert_()
     {
         $data        = $_POST;
         $lokasi_file = $_FILES['foto']['tmp_name'];
@@ -562,7 +562,7 @@ class Penduduk_model extends CI_Model
 
         $sql   = 'SELECT MAX(id) as id FROM tweb_penduduk';
         $query = $this->db->query($sql);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
         $idku  = $data['id'];
 
         $satuan   = $_POST['tanggallahir'];
@@ -598,13 +598,13 @@ class Penduduk_model extends CI_Model
         }
     }
 
-    public function update($id = 0)
+    public function update_($id = 0)
     {
         $data = $_POST;
 
         $sql   = 'SELECT id_kk FROM tweb_penduduk WHERE id=?';
         $query = $this->db->query($sql, $id);
-        $pend  = $query->row_array();
+        $pend  = $query->getRowArray();
 
         if ($data['kk_level'] === 1) {
             $lvl['kk_level'] = 11;
@@ -656,7 +656,7 @@ class Penduduk_model extends CI_Model
     {
         $sql   = 'SELECT id FROM tweb_penduduk_map WHERE id=?';
         $query = $this->db->query($sql, $id);
-        $cek   = $query->row_array();
+        $cek   = $query->getRowArray();
 
         $data = $_POST;
         unset($data['zoom'], $data['map_tipe']);
@@ -684,7 +684,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT m.*,p.nama FROM tweb_penduduk_map m LEFT JOIN tweb_penduduk p ON m.id = p.id WHERE m.id = ? ';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function update_status_dasar($id = 0)
@@ -715,7 +715,7 @@ class Penduduk_model extends CI_Model
         }
     }
 
-    public function delete($id = '')
+    public function delete_($id = '')
     {
         $sql  = 'DELETE FROM tweb_penduduk WHERE id=?';
         $outp = $this->db->query($sql, [$id]);
@@ -792,7 +792,7 @@ class Penduduk_model extends CI_Model
 			LEFT JOIN tweb_cacat ct ON u.cacat_id = ct.id
 			LEFT JOIN tweb_penduduk_agama g ON u.agama_id = g.id WHERE u.id=?";
         $query                     = $this->db->query($sql, $id);
-        $data                      = $query->row_array();
+        $data                      = $query->getRowArray();
         $data['tanggallahir']      = tgl_indo_out($data['tanggallahir']);
         $data['tanggalperkawinan'] = tgl_indo_out($data['tanggalperkawinan']);
         $data['tanggalperceraian'] = tgl_indo_out($data['tanggalperceraian']);
@@ -805,7 +805,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE zoom > '0'";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_dusun()
@@ -813,7 +813,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt = '0' AND rw = '0' ";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rw($dusun = '')
@@ -821,7 +821,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt = '0' AND dusun = ? AND rw <> '0'";
         $query = $this->db->query($sql, $dusun);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rt($dusun = '', $rw = '')
@@ -829,7 +829,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rw = ? AND dusun = ? AND rt <> '0'";
         $query = $this->db->query($sql, [$rw, $dusun]);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rw_all()
@@ -837,7 +837,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt = '0' AND rw <> '0'";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_rt_all()
@@ -845,7 +845,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE rt <> '0' AND rw <> '-'";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_agama()
@@ -853,7 +853,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_agama WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_hubungan()
@@ -861,7 +861,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_hubungan WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_pendidikan()
@@ -869,7 +869,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_pendidikan WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_pendidikan_telah()
@@ -877,7 +877,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_penduduk_pendidikan WHERE left(nama,6)<> 'SEDANG' ";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_pendidikan_sedang()
@@ -885,7 +885,7 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_penduduk_pendidikan WHERE left(nama,5)<> 'TAMAT' ";
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_pendidikan_kk()
@@ -893,7 +893,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_pendidikan_kk WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_pekerjaan()
@@ -901,7 +901,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_pekerjaan WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_warganegara()
@@ -909,7 +909,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_warganegara WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_status_kawin()
@@ -917,7 +917,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_penduduk_kawin WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_golongan_darah()
@@ -925,7 +925,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_golongan_darah WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_cacat()
@@ -933,7 +933,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_cacat WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function list_sakit_menahun()
@@ -941,7 +941,7 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_sakit_menahun WHERE 1';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function pindah_proses($id = 0, $id_cluster = '')
@@ -1066,7 +1066,7 @@ class Penduduk_model extends CI_Model
             if ($kf !== '') {
                 $sql   = "SELECT nama FROM {$table} WHERE id IN ({$kf})";
                 $query = $this->db->query($sql);
-                $data  = $query->result_array();
+                $data  = $query->getResultArray();
                 if (count($data) > 0) {
                     $br = ' ';
                     $rn = "\r\n";
@@ -1174,7 +1174,7 @@ class Penduduk_model extends CI_Model
         }
         $query = $this->db->query($sql, $nomor);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_cluster($id_cluster = 0)
@@ -1182,14 +1182,14 @@ class Penduduk_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE id={$id_cluster} ";
         $query = $this->db->query($sql);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function randomap()
     {
         $sql   = 'SELECT u.id,id_cluster,map.lat,map.lng FROM tweb_penduduk u LEFT JOIN tweb_penduduk_map map ON u.id = map.id WHERE 1 ';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -1314,7 +1314,7 @@ class Penduduk_model extends CI_Model
         $query = $this->db->query($sql, $id);
         $data  = null;
         if ($query) {
-            $data = $query->result_array();
+            $data = $query->getResultArray();
         }
 
         $i = 0;
@@ -1333,7 +1333,7 @@ class Penduduk_model extends CI_Model
         $query = $this->db->query($sql, $id);
         $data  = null;
         if ($query) {
-            $data = $query->result_array();
+            $data = $query->getResultArray();
         }
 
         $i = 0;
@@ -1403,6 +1403,6 @@ class Penduduk_model extends CI_Model
         $sql   = 'SELECT * FROM dokumen WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 }

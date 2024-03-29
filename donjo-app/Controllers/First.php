@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Config;
 
 class First extends BaseController
 {
@@ -50,7 +51,7 @@ class First extends BaseController
         $data   = [];
 
         $data['p']             = $p;
-        $data['desa']          = $config->find()->get()->row_array();
+        $data['desa']          = $config->findAll();
         $data['menu_atas']     = $this->first_menu_m->list_menu_atas();
         $data['menu_kiri']     = $this->first_menu_m->list_menu_kiri();
         $data['headline']      = $this->first_artikel_m->get_headline();

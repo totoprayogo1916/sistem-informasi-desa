@@ -13,7 +13,7 @@ class Web_gallery_model extends CI_Model
         $sql = 'SELECT gambar FROM gambar_gallery
 					UNION SELECT nama FROM gambar_gallery';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -56,7 +56,7 @@ class Web_gallery_model extends CI_Model
         $sql = 'SELECT COUNT(id) AS id FROM gambar_gallery WHERE tipe = 0 ';
         $sql .= $this->search_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -101,7 +101,7 @@ class Web_gallery_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -230,7 +230,7 @@ class Web_gallery_model extends CI_Model
         $sql   = 'SELECT * FROM gambar_gallery WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function gallery_show()
@@ -238,7 +238,7 @@ class Web_gallery_model extends CI_Model
         $sql   = 'SELECT * FROM gambar_gallery WHERE enabled=?';
         $query = $this->db->query($sql, 1);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 
     public function paging2($gal = 0, $p = 1)
@@ -248,7 +248,7 @@ class Web_gallery_model extends CI_Model
         $sql = 'SELECT COUNT(id) AS id FROM gambar_gallery WHERE parrent = ? AND tipe = 2 ';
         $sql .= $this->search_sql();
         $query    = $this->db->query($sql, $gal);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -267,7 +267,7 @@ class Web_gallery_model extends CI_Model
 
         $sql .= $paging_sql;
         $query = $this->db->query($sql, $gal);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 

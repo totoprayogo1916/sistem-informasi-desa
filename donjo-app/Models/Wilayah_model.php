@@ -12,7 +12,7 @@ class Wilayah_model extends CI_Model
     {
         $sql   = 'SELECT dusun FROM tweb_wil_clusterdesa';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -45,7 +45,7 @@ class Wilayah_model extends CI_Model
         $sql = "SELECT COUNT(id) AS id FROM tweb_wil_clusterdesa u WHERE u.rt = '0' AND u.rw = '0' ";
         $sql .= $this->search_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -74,7 +74,7 @@ class Wilayah_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -182,7 +182,7 @@ class Wilayah_model extends CI_Model
 		(SELECT COUNT(p.id) FROM tweb_keluarga k inner join tweb_penduduk p ON k.nik_kepala=p.id WHERE p.id_cluster IN(SELECT id FROM tweb_wil_clusterdesa WHERE dusun = '{$dusun}' AND rw = u.rw) AND p.kk_level = 1 AND p.status_dasar=1) AS jumlah_kk
 		FROM tweb_wil_clusterdesa u LEFT JOIN tweb_penduduk a ON u.id_kepala = a.id WHERE u.rt = '0' AND u.rw <> '0' AND u.dusun = '{$dusun}'";
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -276,7 +276,7 @@ class Wilayah_model extends CI_Model
 		FROM tweb_wil_clusterdesa u LEFT JOIN tweb_penduduk a ON u.id_kepala = a.id WHERE u.rt <> '0' AND u.rw = '{$rw}' AND u.dusun = '{$dusun}' AND u.rt <> '-'";
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -338,7 +338,7 @@ class Wilayah_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_wil_clusterdesa WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function update_rw_map($dus = 0, $id = 0)
@@ -407,7 +407,7 @@ class Wilayah_model extends CI_Model
     {
         $sql   = 'SELECT id,nik,nama FROM tweb_penduduk WHERE status = 1';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -423,7 +423,7 @@ class Wilayah_model extends CI_Model
     {
         $sql   = 'SELECT id,nik,nama FROM tweb_penduduk WHERE status = 1 AND id NOT IN(?)';
         $query = $this->db->query($sql, $id);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -440,7 +440,7 @@ class Wilayah_model extends CI_Model
         $sql   = "select * FROM tweb_clusterdesa Where dusun = ? AND rt <> '' ";
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_penduduk($id = 0)
@@ -448,7 +448,7 @@ class Wilayah_model extends CI_Model
         $sql   = 'SELECT id,nik,nama FROM tweb_penduduk WHERE id = ?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_dusun($dusun = '')
@@ -456,7 +456,7 @@ class Wilayah_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE dusun = ? AND rt = '0' AND rw = '0'";
         $query = $this->db->query($sql, $dusun);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function cluster_by_id($id = '')
@@ -464,7 +464,7 @@ class Wilayah_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_wil_clusterdesa WHERE id = ?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_rw($dusun = '', $rw = '')
@@ -472,7 +472,7 @@ class Wilayah_model extends CI_Model
         $sql   = "SELECT * FROM tweb_wil_clusterdesa WHERE dusun = ? AND rw = ? AND rt = '0'";
         $query = $this->db->query($sql, [$dusun, $rw]);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_rt($dusun = '', $rw = '', $rt = '')
@@ -480,7 +480,7 @@ class Wilayah_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_wil_clusterdesa WHERE dusun = ? AND rw = ? AND rt = ?';
         $query = $this->db->query($sql, [$dusun, $rw, $rt]);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function total()
@@ -493,7 +493,7 @@ class Wilayah_model extends CI_Model
 		(SELECT COUNT(p.id) FROM tweb_keluarga k inner join tweb_penduduk p ON k.nik_kepala=p.id WHERE p.id_cluster IN(SELECT id FROM tweb_wil_clusterdesa) AND p.kk_level = 1 and status_dasar=1 and (status = 1 OR status = 2)) AS total_kk FROM tweb_wil_clusterdesa u LEFT JOIN tweb_penduduk a ON u.id_kepala = a.id WHERE u.rt = '0' AND u.rw = '0' limit 1";
         $query = $this->db->query($sql);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function total_rw($dusun = '')
@@ -506,7 +506,7 @@ class Wilayah_model extends CI_Model
 		(SELECT COUNT(p.id) FROM tweb_keluarga k inner join tweb_penduduk p ON k.nik_kepala=p.id WHERE p.id_cluster IN(SELECT id FROM tweb_wil_clusterdesa WHERE dusun = '{$dusun}' AND rw = u.rw) AND p.kk_level = 1 and status_dasar=1) AS jumlah_kk FROM tweb_wil_clusterdesa u LEFT JOIN tweb_penduduk a ON u.id_kepala = a.id WHERE u.rt = '0' AND u.rw <> '0' AND u.dusun = '{$dusun}') as x ";
         $query = $this->db->query($sql);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function total_rt($dusun = '', $rw = '')
@@ -518,6 +518,6 @@ class Wilayah_model extends CI_Model
 		(SELECT COUNT(p.id) FROM tweb_keluarga k inner join tweb_penduduk p ON k.nik_kepala=p.id WHERE p.id_cluster IN(SELECT id FROM tweb_wil_clusterdesa WHERE dusun = '{$dusun}' AND rw = '{$rw}' AND rt = u.rt) AND p.kk_level = 1 and status_dasar=1) AS jumlah_kk FROM tweb_wil_clusterdesa u LEFT JOIN tweb_penduduk a ON u.id_kepala = a.id WHERE u.rt <> '0' AND u.rt <> '-' AND u.rw = '{$rw}' AND u.dusun = '{$dusun}') as x ";
         $query = $this->db->query($sql);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 }

@@ -13,7 +13,7 @@ class Web_artikel_model extends CI_Model
         $sql = 'SELECT judul FROM artikel
 					UNION SELECT isi FROM artikel';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -67,7 +67,7 @@ class Web_artikel_model extends CI_Model
         $sql .= $this->search_sql();
         $sql .= $this->filter_sql();
         $query    = $this->db->query($sql, $cat);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -113,7 +113,7 @@ class Web_artikel_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql, $cat);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -354,14 +354,14 @@ class Web_artikel_model extends CI_Model
         $sql   = 'SELECT a.*,u.nama AS owner FROM artikel a LEFT JOIN user u ON a.id_user = u.id WHERE a.id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function get_headline()
     {
         $sql   = 'SELECT a.*,u.nama AS owner FROM artikel a LEFT JOIN user u ON a.id_user = u.id WHERE headline = 1 ORDER BY tgl_upload DESC LIMIT 1 ';
         $query = $this->db->query($sql);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
 
         if (empty($data)) {
             $data = null;
@@ -379,7 +379,7 @@ class Web_artikel_model extends CI_Model
     {
         $sql   = 'SELECT a.*,u.nama AS owner,k.kategori AS kategori FROM artikel a LEFT JOIN user u ON a.id_user = u.id LEFT JOIN kategori k ON a.id_kategori = k.id WHERE a.enabled=? AND k.tipe = 1 ORDER BY a.tgl_upload DESC LIMIT 4';
         $query = $this->db->query($sql, 1);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -427,7 +427,7 @@ class Web_artikel_model extends CI_Model
     {
         $sql   = 'SELECT * FROM komentar WHERE id_artikel = ? ORDER BY tgl_upload DESC';
         $query = $this->db->query($sql, $id);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -457,7 +457,7 @@ class Web_artikel_model extends CI_Model
     {
         $sql   = 'SELECT * FROM artikel WHERE id=?';
         $query = $this->db->query($sql, $id);
-        $data  = $query->row_array();
+        $data  = $query->getRowArray();
 
         if ($data['headline'] === '3') {
             $sql  = 'UPDATE artikel SET headline = 0 WHERE id=?';

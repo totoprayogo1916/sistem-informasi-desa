@@ -12,7 +12,7 @@ class Kelompok_master_model extends CI_Model
     {
         $sql   = 'SELECT kelompok FROM kelompok_master';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -67,7 +67,7 @@ class Kelompok_master_model extends CI_Model
         $sql .= $this->filter_sql();
         $sql .= $this->state_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -113,7 +113,7 @@ class Kelompok_master_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -188,7 +188,7 @@ class Kelompok_master_model extends CI_Model
         $sql   = 'SELECT * FROM kelompok_master WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function list_subjek()
@@ -196,6 +196,6 @@ class Kelompok_master_model extends CI_Model
         $sql   = 'SELECT * FROM kelompok_ref_subjek';
         $query = $this->db->query($sql);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

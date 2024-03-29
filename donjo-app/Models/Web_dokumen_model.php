@@ -13,7 +13,7 @@ class Web_dokumen_model extends CI_Model
         $sql = 'SELECT satuan FROM dokumen WHERE id_pend = 0
 					UNION SELECT nama FROM dokumen WHERE id_pend = 0';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -56,7 +56,7 @@ class Web_dokumen_model extends CI_Model
         $sql = 'SELECT COUNT(id) AS id FROM dokumen WHERE id_pend = 0 ';
         $sql .= $this->search_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -103,7 +103,7 @@ class Web_dokumen_model extends CI_Model
         $query = $this->db->query($sql);
         $data  = null;
         if ($query) {
-            $data = $query->result_array();
+            $data = $query->getResultArray();
         }
 
         $i = 0;
@@ -214,7 +214,7 @@ class Web_dokumen_model extends CI_Model
         $sql   = 'SELECT * FROM dokumen WHERE id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function dokumen_show()
@@ -222,6 +222,6 @@ class Web_dokumen_model extends CI_Model
         $sql   = 'SELECT * FROM dokumen WHERE enabled=?';
         $query = $this->db->query($sql, 1);
 
-        return $query->result_array();
+        return $query->getResultArray();
     }
 }

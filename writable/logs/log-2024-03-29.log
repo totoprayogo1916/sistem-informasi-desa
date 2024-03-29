@@ -61,3 +61,99 @@ in APPPATH\Models\Config.php on line 9.
 CRITICAL - 2024-03-29 13:57:04 --> ErrorException: Declaration of App\Models\Penduduk_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
 in APPPATH\Models\Penduduk_model.php on line 601.
  1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 13:57:49 --> ErrorException: Declaration of App\Models\Penduduk_model::delete($id = '') should be compatible with CodeIgniter\BaseModel::delete($id = NULL, bool $purge = false)
+in APPPATH\Models\Penduduk_model.php on line 718.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once()
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile()
+ 4 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
+ 5 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass()
+ 6 [internal function]: spl_autoload_call()
+ 7 SYSTEMPATH\Config\Factories.php(273): class_exists()
+ 8 SYSTEMPATH\Config\Factories.php(199): CodeIgniter\Config\Factories::locateClass()
+ 9 SYSTEMPATH\Config\Factories.php(158): CodeIgniter\Config\Factories::getDefinedInstance()
+10 SYSTEMPATH\Common.php(813): CodeIgniter\Config\Factories::__callStatic()
+11 APPPATH\Controllers\BaseController.php(80): model()
+12 APPPATH\Controllers\First.php(13): App\Controllers\BaseController->initController()
+13 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\First->initController()
+14 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+15 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+16 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:58:02 --> ErrorException: Declaration of App\Models\Surat_keluar_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\Surat_keluar_model.php on line 229.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 13:58:38 --> Error: Class 'App\Controllers\Config' not found
+in APPPATH\Controllers\First.php on line 49.
+ 1 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 2 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:59:00 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\First.php on line 54.
+ 1 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 2 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:00:00 --> Error: Call to a member function getRow() on array
+in APPPATH\Controllers\First.php on line 54.
+ 1 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 2 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:00:16 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::result_array()
+in APPPATH\Models\First_menu_m.php on line 14.
+ 1 APPPATH\Controllers\First.php(55): App\Models\First_menu_m->list_menu_atas()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:00:55 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::row_array()
+in APPPATH\Models\First_artikel_m.php on line 15.
+ 1 APPPATH\Controllers\First.php(57): App\Models\First_artikel_m->get_headline()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:01:39 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+in APPPATH\Models\First_artikel_m.php on line 97.
+ 1 APPPATH\Controllers\First.php(61): App\Models\First_artikel_m->artikel_show()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:02:31 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResult()
+in APPPATH\Models\First_artikel_m.php on line 195.
+ 1 APPPATH\Controllers\First.php(66): App\Models\First_artikel_m->slide_show()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:03:02 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::result_array()
+in APPPATH\Models\First_penduduk_m.php on line 74.
+ 1 APPPATH\Controllers\First.php(68): App\Models\First_penduduk_m->list_data()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:03:50 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::row_array()
+in APPPATH\Models\First_penduduk_m.php on line 87.
+ 1 APPPATH\Controllers\First.php(68): App\Models\First_penduduk_m->list_data()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:04:32 --> ErrorException: Undefined index: nama_desa
+in APPPATH\Views\layouts\header.php on line 5.
+ 1 APPPATH\Views\layouts\header.php(5): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(228): include('F:\\SOURCE\\ataslangit\\SID_IIS\\donjo-app\\Views\\layouts\\header.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 5 APPPATH\Views\layouts\main.tpl.php(1): view()
+ 6 SYSTEMPATH\View\View.php(228): include('F:\\SOURCE\\ataslangit\\SID_IIS\\donjo-app\\Views\\layouts\\main.tpl.php')
+ 7 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 9 APPPATH\Controllers\First.php(73): view()
+10 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->index()
+11 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

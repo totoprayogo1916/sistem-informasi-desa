@@ -12,7 +12,7 @@ class Web_statis_model extends CI_Model
     {
         $sql   = 'SELECT tgl_upload, owner, email, komentar FROM komentar';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -56,7 +56,7 @@ class Web_statis_model extends CI_Model
         $sql .= $this->search_sql();
         $sql .= $this->filter_sql();
         $query    = $this->db->query($sql);
-        $row      = $query->row_array();
+        $row      = $query->getRowArray();
         $jml_data = $row['id'];
 
         $cfg['page']     = $p;
@@ -95,7 +95,7 @@ class Web_statis_model extends CI_Model
         $sql .= $paging_sql;
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
         $j = $offset;
@@ -190,14 +190,14 @@ class Web_statis_model extends CI_Model
         $sql   = 'SELECT a.* FROM komentar a WHERE a.id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function komentar_show()
     {
         $sql   = 'SELECT a.*,u.nama AS owner FROM komentar a LEFT JOIN user u ON a.id_user = u.id WHERE enabled=? ORDER BY a.tgl_upload DESC LIMIT 6';
         $query = $this->db->query($sql, 1);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -232,7 +232,7 @@ class Web_statis_model extends CI_Model
     {
         $sql   = 'SELECT * FROM komentar WHERE id_komentar = ? ORDER BY tgl_upload DESC';
         $query = $this->db->query($sql, $id);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 

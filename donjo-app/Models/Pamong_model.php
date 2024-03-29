@@ -13,7 +13,7 @@ class Pamong_model extends CI_Model
         $sql .= $this->filter_sql();
 
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i = 0;
 
@@ -31,7 +31,7 @@ class Pamong_model extends CI_Model
 					UNION SELECT pamong_nip FROM tweb_desa_pamong
 					UNION SELECT pamong_nik FROM tweb_desa_pamong';
         $query = $this->db->query($sql);
-        $data  = $query->result_array();
+        $data  = $query->getResultArray();
 
         $i    = 0;
         $outp = '';
@@ -72,7 +72,7 @@ class Pamong_model extends CI_Model
         $sql   = 'SELECT * FROM tweb_desa_pamong WHERE pamong_id=?';
         $query = $this->db->query($sql, $id);
 
-        return $query->row_array();
+        return $query->getRowArray();
     }
 
     public function insert()
