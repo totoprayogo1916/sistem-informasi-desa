@@ -5,6 +5,7 @@
   "require": {
     "php": ">=7.4",
     "codeigniter/framework": "^3",
+    "codeigniter4/framework": "4.4.7",
     "vlucas/phpdotenv": "^5.5",
     "yidas/codeigniter-model": "^2.19"
   },
