@@ -61,7 +61,7 @@ class Routing extends BaseRouting
      *
      * Default: false
      */
-    public bool $translateURIDashes = false;
+    public bool $translateURIDashes = true;
 
     /**
      * Sets the class/method that should be called if routing doesn't
@@ -89,7 +89,7 @@ class Routing extends BaseRouting
      *
      * If FALSE, will stop searching and do NO automatic routing.
      */
-    public bool $autoRoute = false;
+    public bool $autoRoute = true;
 
     /**
      * If TRUE, will enable the use of the 'prioritize' option
