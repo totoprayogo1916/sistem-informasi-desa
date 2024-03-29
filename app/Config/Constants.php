@@ -2,6 +2,15 @@
 
 /*
  | --------------------------------------------------------------------
+ | VERSI SID
+ | --------------------------------------------------------------------
+ |
+ | Untuk menandakan versi Sistem Informasi Desa yang diterbitkan
+ */
+define('VERSI_SID', '4.5.5');
+
+/*
+ | --------------------------------------------------------------------
  | App Namespace
  | --------------------------------------------------------------------
  |
@@ -93,4 +102,12 @@ define('EVENT_PRIORITY_NORMAL', 100);
  */
 define('EVENT_PRIORITY_HIGH', 10);
 
-define('VERSI_SID', '4.5.5');
+$host = 'localhost:8000';
+
+if (! empty($_SERVER['HTTP_HOST'])) {
+    $host = $_SERVER['HTTP_HOST'];
+}
+
+$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . $host . dirname($_SERVER['SCRIPT_NAME']);
+
+defined('BASE_URL') || define('BASE_URL', $base_url);
