@@ -23,7 +23,7 @@ class Install extends InstallController
      */
     public function index()
     {
-        return view('install/index');
+        return echo view('install/index');
     }
 
     /**
@@ -42,6 +42,6 @@ class Install extends InstallController
             return redirect('/');
         }
 
-        return view('install/done', $out);
+        return echo view('install/done', $out);
     }
 }

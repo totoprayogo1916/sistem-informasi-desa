@@ -28,10 +28,10 @@ class Widget extends BaseController
         $header              = $this->header_model->get_data();
         $nav['act']          = 5;
 
-        view('header', $header);
-        view('web/nav', $nav);
-        view('web/widget/facebook', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('web/nav', $nav);
+        echo view('web/widget/facebook', $data);
+        echo view('footer');
     }
 
     public function twitter()
@@ -42,10 +42,10 @@ class Widget extends BaseController
         $header              = $this->header_model->get_data();
         $nav['act']          = 5;
 
-        view('header', $header);
-        view('web/nav', $nav);
-        view('web/widget/twitter', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('web/nav', $nav);
+        echo view('web/widget/twitter', $data);
+        echo view('footer');
     }
 
     public function update($tipe = '', $id = '')

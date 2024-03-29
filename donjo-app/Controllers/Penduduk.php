@@ -108,10 +108,10 @@ class Penduduk extends BaseController
 
         $data['info'] = $this->penduduk_model->get_filter();
 
-        view('header', $header);
-        view('sid/nav', $nav);
-        view('sid/kependudukan/penduduk', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('sid/nav', $nav);
+        echo view('sid/kependudukan/penduduk', $data);
+        echo view('footer');
     }
 
     public function form($p = 1, $o = 0, $id = '')
@@ -167,10 +167,10 @@ class Penduduk extends BaseController
 
         $nav['act'] = 2;
 
-        view('header', $header);
-        view('sid/nav', $nav);
-        view('sid/kependudukan/penduduk_form', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('sid/nav', $nav);
+        echo view('sid/kependudukan/penduduk_form', $data);
+        echo view('footer');
     }
 
     public function detail($p = 1, $o = 0, $id = '')
@@ -187,10 +187,10 @@ class Penduduk extends BaseController
 
         $nav['act'] = 2;
 
-        view('header', $header);
-        view('sid/nav', $nav);
-        view('sid/kependudukan/penduduk_detail', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('sid/nav', $nav);
+        echo view('sid/kependudukan/penduduk_detail', $data);
+        echo view('footer');
     }
 
     public function dokumen($id = '')
@@ -204,10 +204,10 @@ class Penduduk extends BaseController
 
         $nav['act'] = 2;
 
-        view('header', $header);
-        view('sid/nav', $nav);
-        view('sid/kependudukan/penduduk_dokumen', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('sid/nav', $nav);
+        echo view('sid/kependudukan/penduduk_dokumen', $data);
+        echo view('footer');
     }
 
     public function dokumen_form($id = 0)
@@ -217,7 +217,7 @@ class Penduduk extends BaseController
         $data['penduduk']    = $this->penduduk_model->get_penduduk($id);
         $data['form_action'] = site_url('penduduk/dokumen_insert');
 
-        view('sid/kependudukan/dokumen_form', $data);
+        echo view('sid/kependudukan/dokumen_form', $data);
     }
 
     public function dokumen_list($id = 0)
@@ -227,7 +227,7 @@ class Penduduk extends BaseController
         $data['list_dokumen'] = $this->penduduk_model->list_dokumen($id);
         $data['penduduk']     = $this->penduduk_model->get_penduduk($id);
 
-        view('sid/kependudukan/dokumen_ajax', $data);
+        echo view('sid/kependudukan/dokumen_ajax', $data);
     }
 
     public function dokumen_insert()
@@ -259,7 +259,7 @@ class Penduduk extends BaseController
         $data['desa']     = $this->header_model->get_data();
         $data['penduduk'] = $this->penduduk_model->get_penduduk($id);
 
-        view('sid/kependudukan/cetak_biodata', $data);
+        echo view('sid/kependudukan/cetak_biodata', $data);
     }
 
     public function search()
@@ -407,7 +407,7 @@ class Penduduk extends BaseController
     {
         $data['form_action'] = site_url("penduduk/index/{$p}/{$o}/{$id}");
 
-        view('sid/kependudukan/ajax_delete', $data);
+        echo view('sid/kependudukan/ajax_delete', $data);
     }
 
     public function delete($p = 1, $o = 0, $id = '')
@@ -532,7 +532,7 @@ class Penduduk extends BaseController
         $data['pekerjaan']           = $this->penduduk_model->list_pekerjaan();
         $data['form_action']         = site_url('penduduk/adv_search_proses');
 
-        view('sid/kependudukan/ajax_adv_search_form', $data);
+        echo view('sid/kependudukan/ajax_adv_search_form', $data);
     }
 
     public function adv_search_proses()
@@ -564,7 +564,7 @@ class Penduduk extends BaseController
         $data['dusun'] = $this->penduduk_model->list_dusun();
 
         $data['form_action'] = site_url("penduduk/pindah_proses/{$id}");
-        view('sid/kependudukan/ajax_pindah_form', $data);
+        echo view('sid/kependudukan/ajax_pindah_form', $data);
     }
 
     public function ajax_penduduk_pindah_rw($dusun = '')
@@ -647,7 +647,7 @@ class Penduduk extends BaseController
         $data['desa']        = $this->config_model->get_data();
         $data['form_action'] = site_url("penduduk/update_maps/{$p}/{$o}/{$id}");
 
-        view('sid/kependudukan/maps', $data);
+        echo view('sid/kependudukan/maps', $data);
     }
 
     public function update_maps($p = 1, $o = 0, $id = '')
@@ -665,7 +665,7 @@ class Penduduk extends BaseController
         $data['o']           = $o;
         $data['form_action'] = site_url('penduduk');
 
-        view('sid/kependudukan/maps', $data);
+        echo view('sid/kependudukan/maps', $data);
     }
 
     public function edit_status_dasar($p = 1, $o = 0, $id = 0)
@@ -675,7 +675,7 @@ class Penduduk extends BaseController
         $data['nik']         = $this->penduduk_model->get_penduduk($id);
         $data['form_action'] = site_url("penduduk/update_status_dasar/{$p}/{$o}/{$id}");
 
-        view('sid/kependudukan/ajax_edit_status_dasar', $data);
+        echo view('sid/kependudukan/ajax_edit_status_dasar', $data);
     }
 
     public function update_status_dasar($p = 1, $o = 0, $id = '')
@@ -691,7 +691,7 @@ class Penduduk extends BaseController
         $data['info'] = $this->penduduk_model->get_filter();
         $data['main'] = $this->penduduk_model->list_data($o, 0, 10000);
 
-        view('sid/kependudukan/penduduk_print', $data);
+        echo view('sid/kependudukan/penduduk_print', $data);
     }
 
     public function excel($o = 0)
@@ -701,7 +701,7 @@ class Penduduk extends BaseController
         $data['info'] = $this->penduduk_model->get_filter();
         $data['main'] = $this->penduduk_model->list_data($o, 0, 10000);
 
-        view('sid/kependudukan/penduduk_excel', $data);
+        echo view('sid/kependudukan/penduduk_excel', $data);
     }
 
     public function statistik($tipe = '', $nomor = '', $sex = '')

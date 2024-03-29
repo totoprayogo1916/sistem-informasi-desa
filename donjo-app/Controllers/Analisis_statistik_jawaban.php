@@ -99,10 +99,10 @@ class Analisis_statistik_jawaban extends BaseController
         $data['list_dusun']      = $this->analisis_statistik_jawaban_model->list_dusun();
         $header                  = $this->header_model->get_data();
 
-        view('header', $header);
-        view('analisis_master/nav');
-        view('analisis_statistik_jawaban/table', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('analisis_master/nav');
+        echo view('analisis_statistik_jawaban/table', $data);
+        echo view('footer');
     }
 
     public function form($p = 1, $o = 0, $id = '')
@@ -122,10 +122,10 @@ class Analisis_statistik_jawaban extends BaseController
         $header                  = $this->header_model->get_data();
         $data['analisis_master'] = $this->analisis_statistik_jawaban_model->get_analisis_master();
 
-        view('header', $header);
-        view('analisis_master/nav');
-        view('analisis_statistik_jawaban/form', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('analisis_master/nav');
+        echo view('analisis_statistik_jawaban/form', $data);
+        echo view('footer');
     }
 
     public function parameter($id = '')
@@ -141,10 +141,10 @@ class Analisis_statistik_jawaban extends BaseController
 
         $header = $this->header_model->get_data();
 
-        view('header', $header);
-        view('analisis_master/nav');
-        view('analisis_statistik_jawaban/parameter/table', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('analisis_master/nav');
+        echo view('analisis_statistik_jawaban/parameter/table', $data);
+        echo view('footer');
     }
 
     public function grafik_parameter($id = '')
@@ -182,10 +182,10 @@ class Analisis_statistik_jawaban extends BaseController
 
         $header = $this->header_model->get_data();
 
-        view('header', $header);
-        view('analisis_master/nav');
-        view('analisis_statistik_jawaban/parameter/grafik_table', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('analisis_master/nav');
+        echo view('analisis_statistik_jawaban/parameter/grafik_table', $data);
+        echo view('footer');
     }
 
     public function subjek_parameter($id = '', $par = '')
@@ -224,22 +224,22 @@ class Analisis_statistik_jawaban extends BaseController
 
         $header = $this->header_model->get_data();
 
-        view('header', $header);
-        view('analisis_master/nav');
-        view('analisis_statistik_jawaban/parameter/subjek_table', $data);
-        view('footer');
+        echo view('header', $header);
+        echo view('analisis_master/nav');
+        echo view('analisis_statistik_jawaban/parameter/subjek_table', $data);
+        echo view('footer');
     }
 
     public function cetak($o = 0)
     {
         $data['main'] = $this->analisis_statistik_jawaban_model->list_data($o, 0, 10000);
-        view('analisis_statistik_jawaban/table_print', $data);
+        echo view('analisis_statistik_jawaban/table_print', $data);
     }
 
     public function excel($o = 0)
     {
         $data['main'] = $this->analisis_statistik_jawaban_model->list_data($o, 0, 10000);
-        view('analisis_statistik_jawaban/table_excel', $data);
+        echo view('analisis_statistik_jawaban/table_excel', $data);
     }
 
     public function cetak2($id = '', $par = '')
@@ -247,7 +247,7 @@ class Analisis_statistik_jawaban extends BaseController
         $data['analisis_statistik_pertanyaan'] = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);
         $data['analisis_statistik_jawaban']    = $this->analisis_statistik_jawaban_model->get_analisis_parameter($par);
         $data['main']                          = $this->analisis_statistik_jawaban_model->list_subjek($par);
-        view('analisis_statistik_jawaban/parameter/table_print', $data);
+        echo view('analisis_statistik_jawaban/parameter/table_print', $data);
     }
 
     public function excel2($id = '', $par = '')
@@ -255,7 +255,7 @@ class Analisis_statistik_jawaban extends BaseController
         $data['analisis_statistik_pertanyaan'] = $this->analisis_statistik_jawaban_model->get_analisis_indikator($id);
         $data['analisis_statistik_jawaban']    = $this->analisis_statistik_jawaban_model->get_analisis_parameter($par);
         $data['main']                          = $this->analisis_statistik_jawaban_model->list_subjek($par);
-        view('analisis_statistik_jawaban/parameter/subjek_excel', $data);
+        echo view('analisis_statistik_jawaban/parameter/subjek_excel', $data);
     }
 
     public function search()

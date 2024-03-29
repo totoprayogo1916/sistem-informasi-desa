@@ -56,6 +56,6 @@ class Feed extends BaseController
         $data['data_config'] = $this->config_model->get_data();
         $data['feeds']       = $isiFeed;
 
-        return view('feed', $data);
+        return echo view('feed', $data);
     }
 }
