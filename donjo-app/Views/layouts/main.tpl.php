@@ -1,8 +1,8 @@
-<?= view('layouts/header.php');?>
+<?= view('layouts/header');?>
 <div id="contentwrapper">
     <div id="contentcolumn">
         <div class="innertube">
-            <?= view('partials/content.php');?>
+            <?= view('partials/content');?>
         </div>
     </div>
 </div>

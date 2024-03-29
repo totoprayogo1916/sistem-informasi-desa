@@ -9,7 +9,7 @@ class KategoriModel extends CI_Model
     protected $table = 'kategori';
 
     /**
-     * Ambil data kategori berdasarkan ID kategori
+     * Ambil nama kategori berdasarkan ID kategori
      *
      * @param int $id ID kategori
      *
@@ -17,12 +17,12 @@ class KategoriModel extends CI_Model
      */
     public function get(int $id)
     {
-        $this->db->select('kategori');
-        $this->db->where('id', $id);
+        $x = $this->builder()
+            ->select('kategori')
+            ->where('id', $id);
 
-        $query = $this->db->get($this->table);
-        if ($query->num_rows() > 0) {
-            return $query->getRowArray();
+        if ($x->get()->getNumRows() > 0) {
+            return $x->get()->getFirstRow('array')['kategori'];
         }
 
         return false;

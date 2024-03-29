@@ -255,3 +255,151 @@ in APPPATH\Models\KategoriModel.php on line 20.
  3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
  4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:20:02 --> ErrorException: Undefined property: CodeIgniter\Database\MySQLi\Builder::$findAll
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Models\KategoriModel.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:20:12 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:20:40 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::getRestult()
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:20:46 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::getResult()
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:20:49 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::getResults()
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:21:57 --> Error: Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:22:31 --> Error: Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 14:23:02 --> ErrorException: Undefined property: CodeIgniter\Database\MySQLi\Result::$num_rows
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Models\KategoriModel.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 14:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 14:24:24 --> ErrorException: Undefined offset: 0
+in APPPATH\Models\KategoriModel.php on line 25.
+ 1 APPPATH\Models\KategoriModel.php(25): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 14:24:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:30:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 15:31:21 --> Error: Object of class stdClass could not be converted to string
+in APPPATH\Views\partials\content.php on line 36.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 4 APPPATH\Views\layouts\main.tpl.php(5): view()
+ 5 SYSTEMPATH\View\View.php(228): include('F:\\SOURCE\\ataslangit\\SID_IIS\\donjo-app\\Views\\layouts\\main.tpl.php')
+ 6 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 8 APPPATH\Controllers\First.php(421): view()
+ 9 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+10 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 15:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 15:31:52 --> ErrorException: Undefined offset: 0
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Models\KategoriModel.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 15:32:11 --> ErrorException: Undefined offset: 10
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Models\KategoriModel.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 15:32:55 --> Error: Object of class stdClass could not be converted to string
+in APPPATH\Views\partials\content.php on line 36.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 4 APPPATH\Views\layouts\main.tpl.php(5): view()
+ 5 SYSTEMPATH\View\View.php(228): include('F:\\SOURCE\\ataslangit\\SID_IIS\\donjo-app\\Views\\layouts\\main.tpl.php')
+ 6 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render()
+ 8 APPPATH\Controllers\First.php(421): view()
+ 9 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+10 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 15:33:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 15:33:56 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 15:34:02 --> ErrorException: Undefined offset: 0
+in APPPATH\Models\KategoriModel.php on line 24.
+ 1 APPPATH\Models\KategoriModel.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\First.php(419): App\Models\KategoriModel->get()
+ 3 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 4 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 15:36:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:37:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:40:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 15:41:32 --> ErrorException: Undefined offset: 0
+in APPPATH\Controllers\First.php on line 419.
+ 1 APPPATH\Controllers\First.php(419): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\First->kategori()
+ 3 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 15:41:36 --> ErrorException: Cannot use [] for reading
+in APPPATH\Controllers\First.php on line 419.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-03-29 15:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:42:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
