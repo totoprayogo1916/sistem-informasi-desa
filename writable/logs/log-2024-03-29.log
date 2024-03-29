@@ -1,0 +1,12 @@
+CRITICAL - 2024-03-29 13:41:15 --> Error: Cannot call constructor
+in APPPATH\Controllers\First.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\First->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:43:27 --> Error: Call to undefined function App\Controllers\mandiri_timeout()
+in APPPATH\Controllers\First.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\First->initController()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

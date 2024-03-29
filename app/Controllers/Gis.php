@@ -1,13 +1,15 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Gis extends BaseController
 {
-    public function __construct()
-    {
-        parent::__construct();
+    public function initController(
+        \CodeIgniter\HTTP\RequestInterface $request,
+        \CodeIgniter\HTTP\ResponseInterface $response,
+        \Psr\Log\LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
 
         $this->load->model('config_model');
         $this->load->model('header_model');

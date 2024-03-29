@@ -4,9 +4,12 @@ use App\Libraries\Install as InstallLib;
 
 class Install extends InstallController
 {
-    public function __construct()
-    {
-        parent::__construct();
+    public function initController(
+        \CodeIgniter\HTTP\RequestInterface $request,
+        \CodeIgniter\HTTP\ResponseInterface $response,
+        \Psr\Log\LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
 
         $this->load->model('header_model');
         $this->load->model('user_model');

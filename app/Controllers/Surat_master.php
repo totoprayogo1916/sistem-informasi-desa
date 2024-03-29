@@ -1,13 +1,15 @@
 <?php
 
-if (! defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
+namespace App\Controllers;
+
 class Surat_master extends BaseController
 {
-    public function __construct()
-    {
-        parent::__construct();
+    public function initController(
+        \CodeIgniter\HTTP\RequestInterface $request,
+        \CodeIgniter\HTTP\ResponseInterface $response,
+        \Psr\Log\LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
 
         $this->load->model('surat_master_model');
         $this->load->model('user_model');
