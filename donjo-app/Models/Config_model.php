@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
 class Config_model extends CI_Model
 {
     public function gawe_surat()
@@ -66,7 +70,7 @@ class Config_model extends CI_Model
         return $query->row_array();
     }
 
-    public function insert()
+    public function insert_()
     {
         $outp = $this->db->insert('config', $_POST);
         if ($outp) {
@@ -76,7 +80,7 @@ class Config_model extends CI_Model
         }
     }
 
-    public function update($id = 0)
+    public function update_($id = 0)
     {
         $data        = $_POST;
         $lokasi_file = $_FILES['logo']['tmp_name'];

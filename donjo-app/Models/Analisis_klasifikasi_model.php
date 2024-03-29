@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
 use App\Libraries\Paging;
 
 class Analisis_klasifikasi_model extends CI_Model

@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
 class Laporan_perubahan_model extends CI_Model
 {
     public function list_data()

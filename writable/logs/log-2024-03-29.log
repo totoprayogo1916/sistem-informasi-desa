@@ -31,3 +31,33 @@ in APPPATH\Controllers\First.php on line 17.
  3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
  4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:53:50 --> ErrorException: Undefined property: App\Controllers\First::$load
+in APPPATH\Controllers\First.php on line 17.
+ 1 APPPATH\Controllers\First.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\First->initController()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:55:46 --> ErrorException: Declaration of App\Models\Config_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\Config_model.php on line 83.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 13:56:28 --> Error: Class 'yidas\Model' not found
+in APPPATH\Models\Config.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile()
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass()
+ 5 [internal function]: spl_autoload_call()
+ 6 SYSTEMPATH\Config\Factories.php(273): class_exists()
+ 7 SYSTEMPATH\Config\Factories.php(199): CodeIgniter\Config\Factories::locateClass()
+ 8 SYSTEMPATH\Config\Factories.php(158): CodeIgniter\Config\Factories::getDefinedInstance()
+ 9 SYSTEMPATH\Common.php(813): CodeIgniter\Config\Factories::__callStatic()
+10 APPPATH\Controllers\BaseController.php(72): model()
+11 APPPATH\Controllers\First.php(13): App\Controllers\BaseController->initController()
+12 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\First->initController()
+13 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+14 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+15 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:57:04 --> ErrorException: Declaration of App\Models\Penduduk_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\Penduduk_model.php on line 601.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

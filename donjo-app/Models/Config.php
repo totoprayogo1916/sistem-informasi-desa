@@ -1,6 +1,8 @@
 <?php
 
-use yidas\Model;
+namespace App\Models;
+
+use CodeIgniter\Model;
 
 class Config extends Model
 {

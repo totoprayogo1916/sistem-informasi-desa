@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use CodeIgniter\Model as CI_Model;
+
 use App\Libraries\Paging;
 
 class Web_komentar_model extends CI_Model
