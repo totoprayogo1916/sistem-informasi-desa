@@ -17,3 +17,10 @@ in APPPATH\Controllers\First.php on line 17.
  3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
  4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 13:48:34 --> ErrorException: Undefined property: App\Controllers\First::$load
+in APPPATH\Controllers\First.php on line 17.
+ 1 APPPATH\Controllers\First.php(17): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\First->initController()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
