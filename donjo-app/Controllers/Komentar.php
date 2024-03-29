@@ -14,7 +14,7 @@ class Komentar extends BaseController
         $this->load->model('user_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1' && $grup !== '2' && $grup !== '3') {
-            redirect('siteman');
+            return redirect()->to('siteman');
         }
         $this->load->model('header_model');
         $this->load->model('web_komentar_model');
@@ -25,7 +25,7 @@ class Komentar extends BaseController
     {
         unset($_SESSION['cari'], $_SESSION['filter']);
 
-        redirect('komentar');
+        return redirect()->to('komentar');
     }
 
     public function index($p = 1, $o = 0)
@@ -88,59 +88,59 @@ class Komentar extends BaseController
 
     public function search()
     {
-        $cari = $this->input->post('cari');
+        $cari = $this->request->getPost('cari');
         if ($cari !== '') {
             $_SESSION['cari'] = $cari;
         } else {
             unset($_SESSION['cari']);
         }
-        redirect('komentar');
+        return redirect()->to('komentar');
     }
 
     public function filter()
     {
-        $filter = $this->input->post('filter');
+        $filter = $this->request->getPost('filter');
         if ($filter !== 0) {
             $_SESSION['filter'] = $filter;
         } else {
             unset($_SESSION['filter']);
         }
-        redirect('komentar');
+        return redirect()->to('komentar');
     }
 
     public function insert()
     {
         $this->web_komentar_model->insert();
-        redirect('komentar');
+        return redirect()->to('komentar');
     }
 
     public function update($id = '', $p = 1, $o = 0)
     {
         $this->web_komentar_model->update($id);
-        redirect("komentar/index/{$p}/{$o}");
+        return redirect()->to("komentar/index/{$p}/{$o}");
     }
 
     public function delete($p = 1, $o = 0, $id = '')
     {
         $this->web_komentar_model->delete($id);
-        redirect("komentar/index/{$p}/{$o}");
+        return redirect()->to("komentar/index/{$p}/{$o}");
     }
 
     public function delete_all($p = 1, $o = 0)
     {
         $this->web_komentar_model->delete_all();
-        redirect("komentar/index/{$p}/{$o}");
+        return redirect()->to("komentar/index/{$p}/{$o}");
     }
 
     public function komentar_lock($id = '')
     {
         $this->web_komentar_model->komentar_lock($id, 1);
-        redirect("komentar/index/{$p}/{$o}");
+        return redirect()->to("komentar/index/{$p}/{$o}");
     }
 
     public function komentar_unlock($id = '')
     {
         $this->web_komentar_model->komentar_lock($id, 2);
-        redirect("komentar/index/{$p}/{$o}");
+        return redirect()->to("komentar/index/{$p}/{$o}");
     }
 }

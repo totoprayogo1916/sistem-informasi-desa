@@ -15,7 +15,7 @@ class Laporan_rentan extends BaseController
         $this->load->model('laporan_bulanan_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1' && $grup !== '2' && $grup !== '3') {
-            redirect('siteman');
+            return redirect()->to('siteman');
         }
         $this->load->model('config_model');
         $this->load->model('header_model');
@@ -31,7 +31,7 @@ class Laporan_rentan extends BaseController
     {
         unset($_SESSION['cari'], $_SESSION['filter'], $_SESSION['dusun'], $_SESSION['rw'], $_SESSION['rt']);
 
-        redirect('laporan_rentan');
+        return redirect()->to('laporan_rentan');
     }
 
     public function index()
@@ -71,12 +71,12 @@ class Laporan_rentan extends BaseController
 
     public function dusun()
     {
-        $dusun = $this->input->post('dusun');
+        $dusun = $this->request->getPost('dusun');
         if ($dusun !== '') {
             $_SESSION['dusun'] = $dusun;
         } else {
             unset($_SESSION['dusun']);
         }
-        redirect('laporan_rentan');
+        return redirect()->to('laporan_rentan');
     }
 }

@@ -4,6 +4,11 @@ namespace App\Controllers;
 
 class Analisis_grafik extends BaseController
 {
+    protected $analisis_grafik_model;
+    protected $analisis_laporan_keluarga_model;
+    protected $user_model;
+    protected $header_model;
+
     public function initController(
         \CodeIgniter\HTTP\RequestInterface $request,
         \CodeIgniter\HTTP\ResponseInterface $response,
@@ -11,13 +16,14 @@ class Analisis_grafik extends BaseController
     ) {
         parent::initController($request, $response, $logger);
 
-        $this->load->model('analisis_grafik_model');
-        $this->load->model('analisis_laporan_keluarga_model');
-        $this->load->model('user_model');
-        $this->load->model('header_model');
+        $this->user_model = model('user_model');
+        $this->analisis_grafik_model = model('analisis_grafik_model');
+        $this->analisis_laporan_keluarga_model = model('analisis_laporan_keluarga_model');
+        $this->header_model = model('header_model');
+
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1') {
-            redirect('siteman');
+            return redirect()->to('siteman');
         }
     }
 
@@ -25,14 +31,14 @@ class Analisis_grafik extends BaseController
     {
         $_SESSION['analisis_master'] = $id;
         unset($_SESSION['cari']);
-        redirect('analisis_grafik');
+        return redirect()->to('analisis_grafik');
     }
 
     public function leave()
     {
         $id = $_SESSION['analisis_master'];
         unset($_SESSION['analisis_master']);
-        redirect("analisis_master/menu/{$id}");
+        return redirect()->to("analisis_master/menu/{$id}");
     }
 
     public function index($p = 1, $o = 0)
@@ -121,46 +127,46 @@ class Analisis_grafik extends BaseController
     {
         unset($_SESSION['rw'], $_SESSION['rt']);
 
-        $dusun = $this->input->post('dusun');
+        $dusun = $this->request->getPost('dusun');
         if ($dusun !== '') {
             $_SESSION['dusun'] = $dusun;
         } else {
             unset($_SESSION['dusun']);
         }
-        redirect('analisis_grafik');
+        return redirect()->to('analisis_grafik');
     }
 
     public function rw()
     {
         unset($_SESSION['rt']);
-        $rw = $this->input->post('rw');
+        $rw = $this->request->getPost('rw');
         if ($rw !== '') {
             $_SESSION['rw'] = $rw;
         } else {
             unset($_SESSION['rw']);
         }
-        redirect('analisis_grafik');
+        return redirect()->to('analisis_grafik');
     }
 
     public function rt()
     {
-        $rt = $this->input->post('rt');
+        $rt = $this->request->getPost('rt');
         if ($rt !== '') {
             $_SESSION['rt'] = $rt;
         } else {
             unset($_SESSION['rt']);
         }
-        redirect('analisis_grafik');
+        return redirect()->to('analisis_grafik');
     }
 
     public function search()
     {
-        $cari = $this->input->post('cari');
+        $cari = $this->request->getPost('cari');
         if ($cari !== '') {
             $_SESSION['cari'] = $cari;
         } else {
             unset($_SESSION['cari']);
         }
-        redirect('analisis_grafik');
+        return redirect()->to('analisis_grafik');
     }
 }

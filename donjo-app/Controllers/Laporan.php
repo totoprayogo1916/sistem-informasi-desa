@@ -15,7 +15,7 @@ class Laporan extends BaseController
         $this->load->model('laporan_bulanan_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1' && $grup !== '2' && $grup !== '3') {
-            redirect('siteman');
+            return redirect()->to('siteman');
         }
         $this->load->model('config_model');
         $this->load->model('header_model');
@@ -33,7 +33,7 @@ class Laporan extends BaseController
         $_SESSION['bulanku']  = date('n');
         $_SESSION['tahunku']  = date('Y');
         $_SESSION['per_page'] = 200;
-        redirect('laporan');
+        return redirect()->to('laporan');
     }
 
     public function index($lap = 0, $p = 1, $o = 0)
@@ -112,19 +112,19 @@ class Laporan extends BaseController
 
     public function bulan()
     {
-        $bulanku = $this->input->post('bulan');
+        $bulanku = $this->request->getPost('bulan');
         if ($bulanku !== '') {
             $_SESSION['bulanku'] = $bulanku;
         } else {
             unset($_SESSION['bulanku']);
         }
 
-        $tahunku = $this->input->post('tahun');
+        $tahunku = $this->request->getPost('tahun');
         if ($tahunku !== '') {
             $_SESSION['tahunku'] = $tahunku;
         } else {
             unset($_SESSION['tahunku']);
         }
-        redirect('laporan');
+        return redirect()->to('laporan');
     }
 }

@@ -15,7 +15,7 @@ class Mandiri extends BaseController
         $this->load->model('mandiri_model');
         $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
         if ($grup !== '1' && $grup !== '2') {
-            redirect('siteman');
+            return redirect()->to('siteman');
         }
         $this->load->model('header_model');
     }
@@ -24,7 +24,7 @@ class Mandiri extends BaseController
     {
         unset($_SESSION['cari'], $_SESSION['filter']);
 
-        redirect('mandiri');
+        return redirect()->to('mandiri');
     }
 
     public function index($p = 1, $o = 0)
@@ -67,46 +67,46 @@ class Mandiri extends BaseController
 
     public function search()
     {
-        $cari = $this->input->post('cari');
+        $cari = $this->request->getPost('cari');
         if ($cari !== '') {
             $_SESSION['cari'] = $cari;
         } else {
             unset($_SESSION['cari']);
         }
-        redirect('mandiri');
+        return redirect()->to('mandiri');
     }
 
     public function filter()
     {
-        $filter = $this->input->post('nik');
+        $filter = $this->request->getPost('nik');
         if ($filter !== 0) {
             $_SESSION['filter'] = $filter;
         } else {
             unset($_SESSION['filter']);
         }
-        redirect('mandiri/perorangan');
+        return redirect()->to('mandiri/perorangan');
     }
 
     public function nik()
     {
-        $nik = $this->input->post('nik');
+        $nik = $this->request->getPost('nik');
         if ($nik !== 0) {
             $_SESSION['nik'] = $_POST['nik'];
         } else {
             unset($_SESSION['nik']);
         }
-        redirect('mandiri/perorangan');
+        return redirect()->to('mandiri/perorangan');
     }
 
     public function insert()
     {
         $pin             = $this->mandiri_model->insert();
         $_SESSION['pin'] = $pin;
-        redirect('mandiri');
+        return redirect()->to('mandiri');
     }
 
     public function ajax_pin_show($pin = '')
     {
-        redirect('mandiri');
+        return redirect()->to('mandiri');
     }
 }

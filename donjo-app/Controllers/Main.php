@@ -1,9 +1,15 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Libraries\Install;
 
 class Main extends BaseController
 {
+    protected $header_model;
+    protected $user_model;
+    protected $config_model;
+
     public function initController(
         \CodeIgniter\HTTP\RequestInterface $request,
         \CodeIgniter\HTTP\ResponseInterface $response,
@@ -11,9 +17,9 @@ class Main extends BaseController
     ) {
         parent::initController($request, $response, $logger);
 
-        $this->load->model('header_model');
-        $this->load->model('user_model');
-        $this->load->model('config_model');
+        $this->header_model = model('header_model');
+        $this->user_model = model('user_model');
+        $this->config_model = model('config_model');
     }
 
     public function index()
@@ -23,27 +29,27 @@ class Main extends BaseController
                 $grup = $this->user_model->sesi_grup($_SESSION['sesi']);
 
                 switch ($grup) {
-                    case 1: redirect('hom_desa');
+                    case 1: return redirect()->to('hom_desa');
                         break;
 
-                    case 2: redirect('hom_desa');
+                    case 2: return redirect()->to('hom_desa');
                         break;
 
-                    case 3: redirect('web');
+                    case 3: return redirect()->to('web');
                         break;
 
-                    case 4: redirect('web');
+                    case 4: return redirect()->to('web');
                         break;
 
                     default: if (isset($_SESSION['siteman'])) {
-                        redirect('siteman');
+                        return redirect()->to('siteman');
                     } else {
-                        redirect('first');
+                        return redirect()->to('first');
                     }
                 }
             }
         } else {
-            redirect('first');
+            return redirect()->to('first');
         }
     }
 
@@ -58,7 +64,7 @@ class Main extends BaseController
         $out     = $install->run();
 
         if (null === $out) {
-            redirect('/');
+            return redirect()->to('/');
         }
 
         echo view('init', $out);

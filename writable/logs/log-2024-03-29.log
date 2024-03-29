@@ -403,3 +403,46 @@ INFO - 2024-03-29 15:41:46 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-03-29 15:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-29 15:42:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-29 15:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:43:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 15:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 15:44:09 --> ErrorException: Undefined property: App\Controllers\Siteman::$load
+in APPPATH\Controllers\Siteman.php on line 14.
+ 1 APPPATH\Controllers\Siteman.php(14): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\Siteman->initController()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 15:46:33 --> ErrorException: Declaration of App\Models\User_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\User_model.php on line 261.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 22:40:19 --> Error: Class 'BaseController' not found
+in APPPATH\Controllers\Main.php on line 5.
+ 1 SYSTEMPATH\Router\AutoRouter.php(162): include_once()
+ 2 SYSTEMPATH\Router\Router.php(530): CodeIgniter\Router\AutoRouter->getRoute()
+ 3 SYSTEMPATH\Router\Router.php(226): CodeIgniter\Router\Router->autoRoute()
+ 4 SYSTEMPATH\CodeIgniter.php(825): CodeIgniter\Router\Router->handle()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 22:40:50 --> ErrorException: Declaration of App\Models\User_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\User_model.php on line 261.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 22:41:36 --> ErrorException: Declaration of App\Models\User_model::update($id = 0) must be compatible with CodeIgniter\Model::update($id = NULL, $row = NULL): bool
+in APPPATH\Models\User_model.php on line 261.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-29 22:42:18 --> CodeIgniter\HTTP\Exceptions\HTTPException: The route for "first" cannot be found.
+in SYSTEMPATH\HTTP\RedirectResponse.php on line 62.
+ 1 SYSTEMPATH\HTTP\RedirectResponse.php(62): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute()
+ 2 SYSTEMPATH\Common.php(864): CodeIgniter\HTTP\RedirectResponse->route()
+ 3 APPPATH\Controllers\Main.php(52): redirect()
+ 4 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Main->index()
+ 5 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-03-29 22:43:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 22:43:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 22:43:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 22:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 22:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 22:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -228,7 +228,7 @@ class User_model extends CI_Model
         return $data;
     }
 
-    public function insert()
+    public function insert_()
     {
         $data             = $_POST;
         $data['password'] = hash_password($data['password']);
@@ -258,7 +258,7 @@ class User_model extends CI_Model
         }
     }
 
-    public function update($id = 0)
+    public function update_($id = 0)
     {
         $data = $_POST;
         unset($data['old_foto'], $data['foto']);
@@ -293,7 +293,7 @@ class User_model extends CI_Model
         }
     }
 
-    public function delete($id = '')
+    public function delete_($id = '')
     {
         $sql  = 'DELETE FROM user WHERE id=?';
         $outp = $this->db->query($sql, [$id]);

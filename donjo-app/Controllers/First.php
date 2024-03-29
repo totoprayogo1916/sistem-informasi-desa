@@ -6,6 +6,20 @@ use App\Models\Config;
 
 class First extends BaseController
 {
+    protected $header_model;
+    protected $config_model;
+    protected $Config;
+    protected $first_keluarga_m;
+    protected $first_m;
+    protected $first_artikel_m;
+    protected $first_gallery_m;
+    protected $kategori_model;
+    protected $first_menu_m;
+    protected $first_penduduk_m;
+    protected $penduduk_model;
+    protected $surat_model;
+    protected $surat_keluar_model;
+
     public function initController(
         \CodeIgniter\HTTP\RequestInterface $request,
         \CodeIgniter\HTTP\ResponseInterface $response,
@@ -14,6 +28,20 @@ class First extends BaseController
         parent::initController($request, $response, $logger);
 
         mandiri_timeout();
+
+        $this->header_model = model('header_model');
+        $this->config_model = model('config_model');
+        $this->Config = model('Config');
+        $this->first_keluarga_m = model('first_keluarga_m');
+        $this->first_m = model('first_m');
+        $this->first_artikel_m = model('first_artikel_m');
+        $this->first_gallery_m = model('first_gallery_m');
+        $this->kategori_model = model('KategoriModel');
+        $this->first_menu_m = model('first_menu_m');
+        $this->first_penduduk_m = model('first_penduduk_m');
+        $this->penduduk_model = model('penduduk_model');
+        $this->surat_model = model('surat_model');
+        $this->surat_keluar_model = model('surat_keluar_model');
     }
 
     public function auth()
@@ -22,9 +50,9 @@ class First extends BaseController
             $this->first_m->siteman();
         }
         if ($_SESSION['mandiri'] === 1) {
-            redirect('first/mandiri/1/1');
+            return redirect()->to('first/mandiri/1/1');
         } else {
-            redirect('first');
+            return redirect()->to('first');
         }
     }
 
@@ -36,13 +64,13 @@ class First extends BaseController
     public function logout()
     {
         $this->first_m->logout();
-        redirect('first');
+        return redirect()->to('first');
     }
 
     public function ganti()
     {
         $this->first_m->ganti();
-        redirect('first');
+        return redirect()->to('first');
     }
 
     public function index($p = 1)
@@ -86,7 +114,7 @@ class First extends BaseController
         $data   = [];
 
         if ($_SESSION['mandiri'] !== 1) {
-            redirect('first');
+            return redirect()->to('first');
         } else {
             $data['p']             = $p;
             $data['desa']          = $config->asArray()->first();
@@ -268,14 +296,14 @@ class First extends BaseController
             case 'warga-negara':$data['heading'] = 'Warga Negara';
                 break;
 
-            case 'wilayah':redirect('first/wilayah');
+            case 'wilayah':return redirect()->to('first/wilayah');
                 break;
 
             case 'pendidikan-ditempuh':$data['heading'] = 'Pendidikan Sedang Ditempuh';
                 break;
 
             default:$data['heading'] = '';
-                redirect('first');
+                return redirect()->to('first');
                 break;
         }
 
@@ -426,10 +454,10 @@ class First extends BaseController
         $this->first_artikel_m->insert_comment($id);
 
         if ($id !== 775) {
-            redirect("first/artikel/{$id}");
+            return redirect()->to("first/artikel/{$id}");
         } else {
             $_SESSION['sukses'] = 1;
-            redirect('first/mandiri/1/3');
+            return redirect()->to('first/mandiri/1/3');
         }
     }
 
