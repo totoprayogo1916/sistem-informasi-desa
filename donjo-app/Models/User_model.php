@@ -15,13 +15,15 @@ class User_model extends CI_Model
 
         $sql   = 'SELECT id,password,id_grup,session FROM user WHERE username=?';
         $query = $this->db->query($sql, [$username]);
-        $row   = $query->row();
+        $row   = $query->getRow();
         if ($row) {
             if ($password === $row->password) {
                 $this->reset_timer();
                 $data['session'] = hash_password(time() . $password);
-                $this->db->where('id', $row->id);
-                $this->db->update('user', $data);
+
+                $builder = $this->db->table('user');
+                $builder->where('id', $row->id);
+                $builder->update($data);
 
                 $_SESSION['siteman'] = 1;
                 $_SESSION['sesi']    = $data['session'];
@@ -81,7 +83,7 @@ class User_model extends CI_Model
 
         $sql   = 'SELECT id,password,id_grup,session FROM user WHERE id_grup=1 LIMIT 1';
         $query = $this->db->query($sql);
-        $row   = $query->row();
+        $row   = $query->getRow();
 
         if ($password !== $row->password) {
             $_SESSION['siteman']  = 1;
@@ -114,7 +116,7 @@ class User_model extends CI_Model
         $ada   = $query->getResultArray();
 
         if (! $ada) {
-            $this->db->insert('log_bulanan', $data);
+            $this->db->table('log_bulanan')->insert($data);
         } else {
             $sql = "UPDATE log_bulanan SET pend={$data['pend']}, lk = {$data['lk']},pr={$data['pr']},kk = {$data['kk']} WHERE month(tgl) = {$bln} AND year(tgl) = {$thn}";
             $this->db->query($sql);
@@ -145,7 +147,7 @@ class User_model extends CI_Model
     {
         if (isset($_SESSION['cari'])) {
             $cari       = $_SESSION['cari'];
-            $kw         = $this->db->escape_like_str($cari);
+            $kw         = $this->db->escapeLikeString($cari);
             $kw         = '%' . $kw . '%';
             $search_sql = " AND (u.username LIKE '{$kw}' OR u.nama LIKE '{$kw}')";
 
@@ -249,7 +251,7 @@ class User_model extends CI_Model
 
         $data['session'] = hash_password(now());
 
-        $outp = $this->db->insert('user', $data);
+        $outp = $this->db->table('user')->insert($data);
 
         if ($outp) {
             $_SESSION['success'] = 1;
@@ -278,13 +280,11 @@ class User_model extends CI_Model
 
         if ($data['password'] === 'radiisi') {
             unset($data['password']);
-            $this->db->where('id', $id);
-            $outp = $this->db->update('user', $data);
         } else {
             $data['password'] = hash_password($data['password']);
-            $this->db->where('id', $id);
-            $outp = $this->db->update('user', $data);
         }
+
+        $outp = $this->db->table('user')->update($data, ['id' => $id]);
 
         if ($outp) {
             $_SESSION['success'] = 1;
@@ -375,7 +375,7 @@ class User_model extends CI_Model
 
         $sql   = 'SELECT password,id_grup,session FROM user WHERE id=?';
         $query = $this->db->query($sql, [$id]);
-        $row   = $query->row();
+        $row   = $query->getRow();
 
         if ($password === $row->password) {
             if ($pass_baru !== '') {

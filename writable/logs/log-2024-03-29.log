@@ -446,3 +446,20 @@ INFO - 2024-03-29 22:43:47 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-03-29 22:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-29 22:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-29 22:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 23:00:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-29 23:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-29 23:04:21 --> ParseError: syntax error, unexpected 'return' (T_RETURN), expecting ';'
+in APPPATH\Controllers\Siteman.php on line 43.
+ 1 SYSTEMPATH\Router\Router.php(530): CodeIgniter\Router\AutoRouter->getRoute()
+ 2 SYSTEMPATH\Router\Router.php(226): CodeIgniter\Router\Router->autoRoute()
+ 3 SYSTEMPATH\CodeIgniter.php(825): CodeIgniter\Router\Router->handle()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-29 23:04:53 --> ErrorException: Undefined property: App\Controllers\Siteman::$load
+in APPPATH\Controllers\Siteman.php on line 14.
+ 1 APPPATH\Controllers\Siteman.php(14): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(916): App\Controllers\Siteman->initController()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

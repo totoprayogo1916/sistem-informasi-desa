@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 class Siteman extends BaseController
 {
+    protected $user_model;
+    protected $config_model;
+
     public function initController(
         \CodeIgniter\HTTP\RequestInterface $request,
         \CodeIgniter\HTTP\ResponseInterface $response,
@@ -11,8 +14,8 @@ class Siteman extends BaseController
     ) {
         parent::initController($request, $response, $logger);
 
-        $this->load->model('user_model');
-        $this->load->model('config_model');
+        $this->user_model = model('user_model');
+        $this->config_model = model('config_model');
     }
 
     public function index()
@@ -40,7 +43,7 @@ class Siteman extends BaseController
     {
         $this->user_model->siteman();
 
-        return return redirect()->to('main');
+        return redirect()->to('main');
     }
 
     public function login()

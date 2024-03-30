@@ -39,7 +39,7 @@ class Install extends InstallController
         $out     = $install->run();
 
         if (null === $out) {
-            return return redirect()->to('/');
+            return redirect()->to('/');
         }
 
         return echo view('install/done', $out);
